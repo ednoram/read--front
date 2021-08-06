@@ -1,0 +1,54 @@
+.content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  &__left {
+    padding: 140px;
+  }
+
+  &__right {
+    background: $primaryColor;
+    color: white;
+    padding: 140px 80px;
+  }
+
+  &__logo {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 20px;
+  }
+
+  &__no_account_text {
+    margin-top: 40px;
+  }
+
+  &__register_button {
+    background: white;
+    color: $primaryColor;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    -webkit-user-drag: none;
+    padding: 10px 32px;
+    margin-top: 16px;
+  }
+
+  &__continue_link {
+    color: white;
+    margin-top: 28px;
+  }
+
+  &__continue_link:hover {
+    text-decoration: underline;
+  }
+
+  &__title {
+    color: $primaryColor;
+    text-align: center;
+  }
+}

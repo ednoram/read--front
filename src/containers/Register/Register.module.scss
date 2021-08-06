@@ -1,0 +1,53 @@
+.content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  &__left {
+    background: $primaryColor;
+    color: white;
+    padding: 140px 80px;
+  }
+
+  &__right {
+    padding: 140px;
+  }
+
+  &__logo {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 20px;
+  }
+
+  &__have_account {
+    margin-top: 40px;
+  }
+
+  &__login_button {
+    background: white;
+    color: $primaryColor;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 10px 32px;
+    margin-top: 16px;
+  }
+
+  &__continue_link {
+    color: white;
+    margin-top: 28px;
+  }
+
+  &__continue_link:hover {
+    text-decoration: underline;
+  }
+
+  &__title {
+    color: $primaryColor;
+    text-align: center;
+  }
+}

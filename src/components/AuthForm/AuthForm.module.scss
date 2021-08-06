@@ -1,0 +1,23 @@
+.form {
+  max-width: 350px;
+  width: 100%;
+  margin: 50px auto 0;
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__text_input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 12px;
+  }
+
+  &__submit_button {
+    padding: 11px 30px;
+    background: $primaryColor;
+    color: white;
+  }
+}
