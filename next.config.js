@@ -14,4 +14,7 @@ module.exports = {
         .map((fileName) => `@import "@styles/${fileName}.scss";`)
         .join("\n") + "\n\n",
   },
+  env: {
+    APOLLO_URI: process.env.APOLLO_URI,
+  },
 };
