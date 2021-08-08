@@ -13,5 +13,4 @@ const Home: NextPage = () => {
     </Layout>
   );
 };
-
 export default Home;

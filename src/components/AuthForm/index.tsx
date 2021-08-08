@@ -1,4 +1,5 @@
 import { useState, FC, FormEvent } from "react";
+import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
@@ -21,10 +22,18 @@ const AuthForm: FC<Props> = ({ type }) => {
   const typeIsRegister = type === "register";
 
   const [state, setState] = useState(INITIAL_STATE);
-  const [submit, { error, loading }] = useMutation(
+  const [submit, { loading, error }] = useMutation(
     typeIsRegister ? REGISTER_MUTATION : LOG_IN_MUTATION,
-    { onError: () => {} }
+    {
+      onError: () => {},
+      onCompleted: () => {
+        localStorage.setItem("isAuthenticated", "true");
+        router.push("/");
+      },
+    }
   );
+
+  const router = useRouter();
 
   const setStateProperty = (key: string, value: string) => {
     setState({ ...state, [key]: value });

@@ -1,12 +1,15 @@
 import { NextPage } from "next";
 
 import { Layout } from "@components";
+import { useProtectRoute } from "@hooks";
 import { RegisterContainer } from "@containers";
 
 const PAGE_TITLE = "Register";
 const PAGE_DESCRIPTION = "Register page";
 
 const Register: NextPage = () => {
+  useProtectRoute(false);
+
   return (
     <Layout noHeaderAndFooter title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
       <RegisterContainer />
