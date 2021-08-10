@@ -17,9 +17,7 @@ const Register: FC = () => {
         <p className={styles.content__have_account}>Already have an account?</p>
         <Link href={LOGIN_ROUTE}>
           <a>
-            <button name="login page" className={styles.content__login_button}>
-              Log In
-            </button>
+            <button className={styles.content__login_button}>Log In</button>
           </a>
         </Link>
         <Link href={"/"}>
@@ -33,7 +31,7 @@ const Register: FC = () => {
 
   const rightSide = (
     <div className={styles.content__right}>
-      <h1 className={styles.content__title}>Register</h1>
+      <h1 className="page_title">Register</h1>
       <AuthForm type="register" />
     </div>
   );

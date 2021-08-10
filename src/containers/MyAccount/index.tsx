@@ -13,10 +13,8 @@ const MyAccount: FC = () => {
 
   return (
     <div className="container">
-      <h1>My Account</h1>
-      <button name="logout" onClick={handleLogout}>
-        Log Out
-      </button>
+      <h1 className="page_title">My Account</h1>
+      <button onClick={handleLogout}>Log Out</button>
     </div>
   );
 };

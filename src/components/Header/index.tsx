@@ -2,7 +2,12 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { useIsAuthenticated } from "@hooks";
-import { LOGIN_ROUTE, MY_ACCOUNT_ROUTE, REGISTER_ROUTE } from "@constants";
+import {
+  LOGIN_ROUTE,
+  MY_ACCOUNT_ROUTE,
+  POST_ARTICLE,
+  REGISTER_ROUTE,
+} from "@constants";
 
 import styles from "./Header.module.scss";
 import NavigationLink from "./NavigationLink";
@@ -12,6 +17,9 @@ const Header: FC = () => {
 
   const authRelatedLinks = isAuthenticated ? (
     <>
+      <NavigationLink href={POST_ARTICLE} text="Post Article">
+        Log Out
+      </NavigationLink>
       <NavigationLink href={MY_ACCOUNT_ROUTE} text="My Account">
         Log Out
       </NavigationLink>

@@ -34,3 +34,19 @@ export const LOGOUT_MUTATION = gql`
     }
   }
 `;
+
+export const POST_ARTICLE_MUTATION = gql`
+  mutation ($title: String!, $body: String!) {
+    postArticle(title: $title, body: $body) {
+      _id
+    }
+  }
+`;
+
+export const UPDATE_ARTICLE_MUTATION = gql`
+  mutation ($_id: String!, $title: String!, $body: String!) {
+    updateArticle(_id: $_id, title: $title, body: $body) {
+      _id
+    }
+  }
+`;

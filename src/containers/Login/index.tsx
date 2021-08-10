@@ -9,7 +9,7 @@ import styles from "./Login.module.scss";
 const Login: FC = () => {
   const leftSide = (
     <div className={styles.content__left}>
-      <h1 className={styles.content__title}>Log In</h1>
+      <h1 className="page_title">Log In</h1>
       <AuthForm type="login" />
     </div>
   );

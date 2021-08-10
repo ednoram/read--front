@@ -45,10 +45,11 @@ const AuthForm: FC<Props> = ({ type }) => {
     submit({ variables: { name, email, password, passwordConfirmation } });
   };
 
-  const errorMessage = error?.graphQLErrors[0]?.message;
+  const graphQLErrors = error?.graphQLErrors;
+  const errorMessage = graphQLErrors && graphQLErrors[0]?.message;
 
   const errorDiv = errorMessage && (
-    <div className={styles.form__error_div}>
+    <div className="error_div">
       <p>{errorMessage}</p>
     </div>
   );

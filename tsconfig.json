@@ -19,8 +19,9 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@hooks": ["src/hooks"],
+      "@types": ["src/types"],
       "@utils": ["src/utils"],
+      "@hooks": ["src/hooks"],
       "@graphql": ["src/graphql"],
       "@styles/*": ["src/styles/*"],
       "@constants": ["src/constants"],
