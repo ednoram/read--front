@@ -1,6 +1,8 @@
-import { useMemo, FC } from "react";
+import { useEffect, useMemo, useRef, FC } from "react";
 import Link from "next/link";
+import { render } from "react-dom";
 import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
 
 import { IArticle } from "@types";
 import { useGetUser } from "@hooks";
@@ -16,6 +18,12 @@ interface Props {
 const Article: FC<Props> = ({ article }) => {
   const user = useGetUser();
   const { asPath } = useRouter();
+  const articleBodyDiv = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const markdownString = article.body.replaceAll("# ", "## ");
+    render(<ReactMarkdown children={markdownString} />, articleBodyDiv.current);
+  }, []);
 
   const breadcrumbsLinks = useMemo(
     () => [
@@ -36,9 +44,9 @@ const Article: FC<Props> = ({ article }) => {
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
       {editLink}
-      <div className={styles.article_content}>
-        <h1 className="page_title">{article.title}</h1>
-        <p className={styles.article_content__body}>{article.body}</p>
+      <div className={styles.content}>
+        <h1 className={styles.content__title}>{article.title}</h1>
+        <div ref={articleBodyDiv} className={styles.content__body} />
       </div>
     </div>
   );

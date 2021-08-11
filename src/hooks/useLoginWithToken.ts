@@ -8,9 +8,6 @@ const useLoginWithToken = (): void => {
 
   useQuery(LOGIN_WITH_TOKEN_QUERY, {
     onError: () => logout(),
-    onCompleted: (data: unknown) => {
-      if (!data) logout();
-    },
   });
 };
 

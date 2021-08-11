@@ -50,3 +50,11 @@ export const UPDATE_ARTICLE_MUTATION = gql`
     }
   }
 `;
+
+export const DELETE_ARTICLE_MUTATION = gql`
+  mutation ($_id: String!) {
+    deleteArticle(_id: $_id) {
+      success
+    }
+  }
+`;

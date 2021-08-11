@@ -23,11 +23,7 @@
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    "react/no-children-prop": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
