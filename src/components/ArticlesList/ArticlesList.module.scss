@@ -1,0 +1,38 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+
+  &__article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $border;
+    box-shadow: 1px 3px 10px 0 $border;
+    padding: 16px 20px;
+  }
+
+  &__article_title {
+    font-size: 1.5rem;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  &__article_title:hover {
+    opacity: 0.6;
+  }
+
+  &__article_body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  &__read_link {
+    color: $primaryColor;
+    margin-top: 12px;
+  }
+}

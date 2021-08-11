@@ -1,13 +1,14 @@
 import { FC } from "react";
 import Link from "next/link";
 
-import { useIsAuthenticated } from "@hooks";
 import {
   LOGIN_ROUTE,
-  MY_ACCOUNT_ROUTE,
   POST_ARTICLE,
+  ARTICLES_ROUTE,
   REGISTER_ROUTE,
+  MY_ACCOUNT_ROUTE,
 } from "@constants";
+import { useIsAuthenticated } from "@hooks";
 
 import styles from "./Header.module.scss";
 import NavigationLink from "./NavigationLink";
@@ -40,6 +41,9 @@ const Header: FC = () => {
       <ul className={styles.header__nav_list}>
         <li>
           <NavigationLink href="/" text="Home" />
+        </li>
+        <li>
+          <NavigationLink href={ARTICLES_ROUTE} text="Articles" />
         </li>
         {isAuthenticated !== null && authRelatedLinks}
       </ul>

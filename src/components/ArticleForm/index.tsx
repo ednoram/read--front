@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 
 import { IArticle } from "@types";
 import { Loader } from "@components";
-import { ARTICLE_ROUTE } from "@constants";
+import { ARTICLES_ROUTE } from "@constants";
 import { disableRouteChangeEvent } from "@utils";
 import { POST_ARTICLE_MUTATION, UPDATE_ARTICLE_MUTATION } from "@graphql";
 
@@ -27,7 +27,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
       onCompleted: (data): void => {
         const { _id } = data.postArticle || data.updateArticle;
         disableRouteChangeEvent();
-        router.push(`${ARTICLE_ROUTE}/${_id}`);
+        router.push(`${ARTICLES_ROUTE}/${_id}`);
       },
     }
   );

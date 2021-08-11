@@ -18,3 +18,13 @@ export const ARTICLE_QUERY = gql`
     }
   }
 `;
+
+export const ARTICLES_QUERY = gql`
+  {
+    articles {
+      _id
+      body
+      title
+    }
+  }
+`;

@@ -1,0 +1,14 @@
+.content {
+  margin-top: 20px;
+
+  &__user_name {
+    font-size: 1.5rem;
+  }
+
+  &__logout_button {
+    background-color: $red;
+    color: white;
+    padding: 8px 20px;
+    margin-top: 20px;
+  }
+}
