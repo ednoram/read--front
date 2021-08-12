@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
+import { LOGIN_ROUTE } from "@constants";
 import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
 
 import styles from "./AuthForm.module.scss";
@@ -27,8 +28,10 @@ const AuthForm: FC<Props> = ({ type }) => {
     {
       onError: () => {},
       onCompleted: () => {
-        localStorage.setItem("isAuthenticated", "true");
-        router.push("/");
+        if (!typeIsRegister) {
+          localStorage.setItem("isAuthenticated", "true");
+        }
+        router.push(typeIsRegister ? LOGIN_ROUTE : "/");
       },
     }
   );
@@ -41,8 +44,7 @@ const AuthForm: FC<Props> = ({ type }) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { name, email, password, passwordConfirmation } = state;
-    submit({ variables: { name, email, password, passwordConfirmation } });
+    submit({ variables: { ...state } });
   };
 
   const graphQLErrors = error?.graphQLErrors;

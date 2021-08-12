@@ -77,13 +77,11 @@ const ArticleForm: FC<Props> = ({ article }) => {
     </div>
   );
 
-  const loadingDiv =
-    loadingSubmit ||
-    (loadingDelete && (
-      <div className={styles.form__loading_div}>
-        <Loader />
-      </div>
-    ));
+  const loadingDiv = (loadingSubmit || loadingDelete) && (
+    <div className={styles.form__loading_div}>
+      <Loader />
+    </div>
+  );
 
   const cancelButton = (
     <button

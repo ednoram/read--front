@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, FC } from "react";
+import { useState, useEffect, useMemo, useRef, FC } from "react";
 import Link from "next/link";
 import { render } from "react-dom";
 import { useRouter } from "next/router";
@@ -18,12 +18,28 @@ interface Props {
 const Article: FC<Props> = ({ article }) => {
   const user = useGetUser();
   const { asPath } = useRouter();
-  const articleBodyDiv = useRef<HTMLParagraphElement>(null);
+  const [showingAll, setShowingAll] = useState(false);
+  const articleElementRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const markdownString = article.body.replaceAll("# ", "## ");
-    render(<ReactMarkdown children={markdownString} />, articleBodyDiv.current);
+    render(
+      <ReactMarkdown children={markdownString} />,
+      articleElementRef.current
+    );
   }, []);
+
+  useEffect(() => {
+    if (articleElementRef.current) {
+      if (showingAll) {
+        articleElementRef.current.style.height = "unset";
+        articleElementRef.current.style.overflow = "unset";
+      } else {
+        articleElementRef.current.style.height = "600px";
+        articleElementRef.current.style.overflow = "hidden";
+      }
+    }
+  }, [showingAll, articleElementRef.current?.clientHeight]);
 
   const breadcrumbsLinks = useMemo(
     () => [
@@ -34,7 +50,15 @@ const Article: FC<Props> = ({ article }) => {
     [asPath]
   );
 
-  const editLink = user && (
+  const getDateString = (date: string) => {
+    return new Date(Number(date)).toLocaleDateString("en", {
+      month: "short",
+      year: "numeric",
+      day: "numeric",
+    });
+  };
+
+  const editLink = user?.email === article.userEmail && (
     <Link href={`${asPath}/edit`}>
       <a className="color_primary">Edit Article</a>
     </Link>
@@ -52,7 +76,24 @@ const Article: FC<Props> = ({ article }) => {
             <a>{article.userEmail}</a>
           </Link>
         </p>
-        <div ref={articleBodyDiv} className={styles.content__body} />
+        <div className={styles.content__dates}>
+          <p>Created At: {getDateString(article.createdAt)}</p>
+          <p>Updated At: {getDateString(article.updatedAt)}</p>
+        </div>
+        <article ref={articleElementRef} className={styles.content__body} />
+        {!showingAll && (
+          <>
+            <div className={styles.content__body_fade} />
+            <div className="flex_center">
+              <button
+                onClick={() => setShowingAll(true)}
+                className={styles.content__continue_reading_button}
+              >
+                Continue Reading
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

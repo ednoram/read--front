@@ -8,6 +8,11 @@ const useLoginWithToken = (): void => {
     onError: () => {
       localStorage.removeItem("isAuthenticated");
     },
+    onCompleted: (data) => {
+      if (!data.loginWithToken) {
+        localStorage.removeItem("isAuthenticated");
+      }
+    },
   });
 };
 

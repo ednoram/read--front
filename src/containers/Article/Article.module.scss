@@ -1,17 +1,46 @@
 .content {
-  margin-top: 20px;
+  margin-top: 28px;
 
   &__title {
     color: $primaryColor;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  &__user {
+    margin-top: 20px;
+
+    a {
+      color: $primaryColor;
+    }
+  }
+
+  &__dates {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
   }
 
   &__body {
     line-height: 2em;
     font-family: "Roboto Slab", serif;
-    margin-top: 20px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    margin-top: 28px;
 
     p {
       font-size: 1.25em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $primaryColor;
+      font-family: "Roboto", sans-serif;
     }
 
     ul {
@@ -24,11 +53,21 @@
     }
   }
 
-  &__user {
-    margin-top: 20px;
+  &__body_fade {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5),
+      rgb(255, 255, 255)
+    );
+    margin-top: -240px;
+  }
 
-    a {
-      color: $primaryColor;
-    }
+  &__continue_reading_button {
+    background: none;
+    color: $primaryColor;
+    font-size: 1.25rem;
+    margin-top: 40px;
   }
 }

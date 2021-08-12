@@ -1,7 +1,8 @@
 $red: #ca3524;
 $primaryColor: #6a5bdc;
 
-$border: rgba(
-  $color: black,
-  $alpha: 0.1,
-);
+$border: 1px solid
+  rgba(
+    $color: black,
+    $alpha: 0.1,
+  );

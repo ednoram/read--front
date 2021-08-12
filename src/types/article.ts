@@ -3,6 +3,8 @@ interface IArticle {
   body: string;
   title: string;
   userEmail: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default IArticle;

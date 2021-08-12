@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import {
   LOGIN_ROUTE,
+  USERS_ROUTE,
   POST_ARTICLE,
   ARTICLES_ROUTE,
   REGISTER_ROUTE,
@@ -44,6 +45,9 @@ const Header: FC = () => {
         </li>
         <li>
           <NavigationLink href={ARTICLES_ROUTE} text="Articles" />
+        </li>
+        <li>
+          <NavigationLink href={USERS_ROUTE} text="Users" />
         </li>
         {isAuthenticated !== null && authRelatedLinks}
       </ul>
