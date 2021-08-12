@@ -1,8 +1,8 @@
 .list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
-  margin-top: 40px;
+  gap: 32px;
+  margin-top: 20px;
 
   &__article {
     height: 100%;
@@ -29,6 +29,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 10px;
+  }
+
+  &__article_user {
+    margin-top: 10px;
+
+    a {
+      color: $primaryColor;
+    }
   }
 
   &__read_link {

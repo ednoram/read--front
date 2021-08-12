@@ -5,6 +5,8 @@ import { IArticle } from "@types";
 import { ARTICLES_ROUTE } from "@constants";
 import { ArticlesList, Breadcrumbs } from "@components";
 
+import styles from "./Articles.module.scss";
+
 interface Props {
   articles: IArticle[];
 }
@@ -24,7 +26,9 @@ const Articles: FC<Props> = ({ articles }) => {
     <div className="container">
       <Breadcrumbs links={breadcrumbsLinks} />
       <h1 className="page_title">Articles</h1>
-      <ArticlesList articles={articles} />
+      <div className={styles.list}>
+        <ArticlesList articles={articles} />
+      </div>
     </div>
   );
 };

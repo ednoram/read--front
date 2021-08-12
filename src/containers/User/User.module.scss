@@ -1,0 +1,22 @@
+.title {
+  color: $primaryColor;
+}
+
+.user_email {
+  margin-top: 20px;
+}
+
+.articles_div {
+  margin-top: 40px;
+
+  &__heading {
+    color: $primaryColor;
+  }
+
+  &__loading_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+  }
+}

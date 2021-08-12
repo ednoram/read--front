@@ -15,16 +15,28 @@ export const ARTICLE_QUERY = gql`
       _id
       body
       title
+      userEmail
     }
   }
 `;
 
 export const ARTICLES_QUERY = gql`
-  {
-    articles {
+  query ($userEmail: String) {
+    articles(userEmail: $userEmail) {
       _id
       body
       title
+      userEmail
+    }
+  }
+`;
+
+export const USER_QUERY = gql`
+  query ($email: String!) {
+    user(email: $email) {
+      _id
+      name
+      email
     }
   }
 `;

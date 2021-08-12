@@ -2,13 +2,33 @@
   margin-top: 20px;
 
   &__user_name {
-    font-size: 1.5rem;
+    color: $primaryColor;
+    font-size: 1.75rem;
+  }
+
+  &__user_email {
+    margin-top: 16px;
+  }
+
+  &__my_articles {
+    margin-top: 40px;
+  }
+
+  &__my_articles_heading {
+    color: $primaryColor;
+  }
+
+  &__list_loading_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
   }
 
   &__logout_button {
     background-color: $red;
     color: white;
     padding: 8px 20px;
-    margin-top: 20px;
+    margin-top: 36px;
   }
 }

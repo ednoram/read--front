@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { IArticle } from "@types";
-import { ARTICLES_ROUTE } from "@constants";
+import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
 
 import styles from "./ArticlesList.module.scss";
 
@@ -10,8 +10,8 @@ interface Props {
   article: IArticle;
 }
 
-const Article: FC<Props> = ({ article }) => {
-  const { _id, title, body } = article;
+const ListItem: FC<Props> = ({ article }) => {
+  const { _id, title, body, userEmail } = article;
   const articleHref = `${ARTICLES_ROUTE}/${_id}`;
 
   return (
@@ -21,6 +21,12 @@ const Article: FC<Props> = ({ article }) => {
           <a className={styles.list__article_title}>{title}</a>
         </Link>
         <p className={styles.list__article_body}>{body.slice(0, 60)}</p>
+        <p className={styles.list__article_user}>
+          By:{" "}
+          <Link href={`${USERS_ROUTE}/${userEmail}`}>
+            <a>{userEmail}</a>
+          </Link>
+        </p>
       </div>
       <div className="flex_right">
         <Link href={articleHref}>
@@ -31,4 +37,4 @@ const Article: FC<Props> = ({ article }) => {
   );
 };
 
-export default Article;
+export default ListItem;

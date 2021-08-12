@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { IArticle } from "@types";
 import { useGetUser } from "@hooks";
 import { Breadcrumbs } from "@components";
-import { ARTICLES_ROUTE } from "@constants";
+import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
 
 import styles from "./Article.module.scss";
 
@@ -46,6 +46,12 @@ const Article: FC<Props> = ({ article }) => {
       {editLink}
       <div className={styles.content}>
         <h1 className={styles.content__title}>{article.title}</h1>
+        <p className={styles.content__user}>
+          By:{" "}
+          <Link href={`${USERS_ROUTE}/${article.userEmail}`}>
+            <a>{article.userEmail}</a>
+          </Link>
+        </p>
         <div ref={articleBodyDiv} className={styles.content__body} />
       </div>
     </div>

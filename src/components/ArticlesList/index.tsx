@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { IArticle } from "@types";
 
-import Article from "./Article";
+import ListItem from "./ListItem";
 import styles from "./ArticlesList.module.scss";
 
 interface Props {
@@ -12,11 +12,15 @@ interface Props {
 const ArticlesList: FC<Props> = ({ articles }) => {
   return (
     <ul className={styles.list}>
-      {articles.map((article) => (
-        <li key={article._id}>
-          <Article article={article} />
-        </li>
-      ))}
+      {articles && articles.length > 0 ? (
+        articles.map((article) => (
+          <li key={article._id}>
+            <ListItem article={article} />
+          </li>
+        ))
+      ) : (
+        <p>Nothing was found</p>
+      )}
     </ul>
   );
 };

@@ -23,11 +23,12 @@ const Article: NextPage<Props> = ({ article }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
+    const articleId = params?.id;
     const apolloClient = initializeApollo();
 
     const { data } = await apolloClient.query({
       query: ARTICLE_QUERY,
-      variables: { _id: params?.id },
+      variables: { _id: articleId },
     });
 
     const { article } = data;
