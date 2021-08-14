@@ -4,10 +4,19 @@
   &__user_name {
     color: $primaryColor;
     font-size: 1.75rem;
+    margin-top: 20px;
   }
 
   &__user_email {
-    margin-top: 16px;
+    margin-top: 8px;
+  }
+
+  &__user_about {
+    margin-top: 32px;
+  }
+
+  &__user_about_text {
+    margin-top: 12px;
   }
 
   &__my_articles {

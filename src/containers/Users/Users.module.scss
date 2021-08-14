@@ -1,6 +1,6 @@
 .list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
   margin-top: 40px;
 
@@ -22,6 +22,13 @@
 
   &__user_email {
     color: $primaryColor;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  &__user_about {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -10,7 +10,7 @@ import {
 import { IArticle } from "@types";
 import { Loader } from "@components";
 import { ARTICLES_ROUTE } from "@constants";
-import { disableRouteChangeEvent } from "@utils";
+import { disableEnterSubmit, disableRouteChangeEvent } from "@utils";
 
 import styles from "./ArticleForm.module.scss";
 
@@ -78,7 +78,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
   );
 
   const loadingDiv = (loadingSubmit || loadingDelete) && (
-    <div className={styles.form__loading_div}>
+    <div className="loading_div">
       <Loader />
     </div>
   );
@@ -105,12 +105,13 @@ const ArticleForm: FC<Props> = ({ article }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      {cancelButton}
+      <div>{cancelButton}</div>
       {loadingDiv}
       {errorDiv}
       <input
         value={state.title}
         placeholder="Title"
+        onKeyDown={disableEnterSubmit}
         className={styles.form__title_input}
         onChange={(e) => setState({ ...state, title: e.target.value })}
       />

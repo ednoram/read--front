@@ -38,6 +38,12 @@ const User: FC<Props> = ({ user }) => {
       <Breadcrumbs links={breadcrumbsLinks} />
       <h1 className={styles.title}>{user.name}</h1>
       <p className={styles.user_email}>{user.email}</p>
+      {user.about && (
+        <div className={styles.user_about}>
+          <h2 className={styles.user_about__heading}>About</h2>
+          <p className={styles.user_about__text}>{user.about}</p>
+        </div>
+      )}
       <div className={styles.articles_div}>
         <h2 className={styles.articles_div__heading}>Articles</h2>
         {loadingArticles ? (

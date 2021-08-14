@@ -25,7 +25,7 @@ const Users: FC<Props> = ({ users }) => {
 
   const list = (
     <ul className={styles.list}>
-      {users.map(({ _id, name, email }) => (
+      {users.map(({ _id, name, email, about }) => (
         <li key={_id}>
           <div>
             <Link href={`${USERS_ROUTE}/${email}`}>
@@ -37,6 +37,7 @@ const Users: FC<Props> = ({ users }) => {
               <a className={styles.list__user_email}>{email}</a>
             </Link>
           </div>
+          {about && <p className={styles.list__user_about}>{about}</p>}
         </li>
       ))}
     </ul>

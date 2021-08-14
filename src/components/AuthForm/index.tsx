@@ -57,7 +57,7 @@ const AuthForm: FC<Props> = ({ type }) => {
   );
 
   const loadingDiv = loading && (
-    <div className={styles.form__loading_div}>
+    <div className="loading_div">
       <Loader />
     </div>
   );

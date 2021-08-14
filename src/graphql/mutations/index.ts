@@ -58,3 +58,12 @@ export const DELETE_ARTICLE_MUTATION = gql`
     }
   }
 `;
+
+export const UPDATE_USER_MUTATION = gql`
+  mutation ($name: String!, $about: String!) {
+    updateUser(name: $name, about: $about) {
+      name
+      about
+    }
+  }
+`;

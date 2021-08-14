@@ -7,6 +7,18 @@
   margin-top: 20px;
 }
 
+.user_about {
+  margin-top: 20px;
+
+  &__heading {
+    color: $primaryColor;
+  }
+
+  &__text {
+    margin-top: 12px;
+  }
+}
+
 .articles_div {
   margin-top: 40px;
 
