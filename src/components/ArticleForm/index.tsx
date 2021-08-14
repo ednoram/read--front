@@ -109,6 +109,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
       {loadingDiv}
       {errorDiv}
       <input
+        maxLength={60}
         value={state.title}
         placeholder="Title"
         onKeyDown={disableEnterSubmit}

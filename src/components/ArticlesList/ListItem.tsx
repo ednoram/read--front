@@ -28,9 +28,9 @@ const ListItem: FC<Props> = ({ article }) => {
           </Link>
         </p>
       </div>
-      <div className="flex_right">
+      <div className={styles.list__read_link_div}>
         <Link href={articleHref}>
-          <a className={styles.list__read_link}>Read</a>
+          <a>Read</a>
         </Link>
       </div>
     </div>

@@ -1,0 +1,32 @@
+.react-multi-carousel-list {
+  ul li > div {
+    height: 100%;
+    margin-right: 20px;
+  }
+
+  ul li:last-child > div {
+    margin-right: 2px;
+  }
+}
+
+.react-multiple-carousel__arrow {
+  background: $primaryColor !important;
+  transform: scale(0.7);
+  opacity: 0.6 !important;
+}
+
+.react-multiple-carousel__arrow:hover {
+  opacity: 1 !important;
+}
+
+.react-multiple-carousel__arrow::before {
+  color: white !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(3% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(3% + 1px) !important;
+}

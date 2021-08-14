@@ -26,18 +26,25 @@ const Users: FC<Props> = ({ users }) => {
   const list = (
     <ul className={styles.list}>
       {users.map(({ _id, name, email, about }) => (
-        <li key={_id}>
+        <li key={_id} className={styles.list__item}>
           <div>
+            <div>
+              <Link href={`${USERS_ROUTE}/${email}`}>
+                <a className={styles.list__user_name}>{name}</a>
+              </Link>
+            </div>
+            <div>
+              <Link href={`${USERS_ROUTE}/${email}`}>
+                <a className={styles.list__user_email}>{email}</a>
+              </Link>
+            </div>
+            {about && <p className={styles.list__user_about}>{about}</p>}
+          </div>
+          <div className={styles.list__see_user_div}>
             <Link href={`${USERS_ROUTE}/${email}`}>
-              <a className={styles.list__user_name}>{name}</a>
+              <a>See User</a>
             </Link>
           </div>
-          <div>
-            <Link href={`${USERS_ROUTE}/${email}`}>
-              <a className={styles.list__user_email}>{email}</a>
-            </Link>
-          </div>
-          {about && <p className={styles.list__user_about}>{about}</p>}
         </li>
       ))}
     </ul>

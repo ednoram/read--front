@@ -4,7 +4,11 @@
   gap: 32px;
   margin-top: 40px;
 
-  li {
+  &__item {
+    min-height: 152px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: $border;
     padding: 16px 20px;
   }
@@ -33,5 +37,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 8px;
+  }
+
+  &__see_user_div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+
+    a {
+      color: $primaryColor;
+    }
   }
 }

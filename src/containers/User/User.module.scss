@@ -1,4 +1,5 @@
 .title {
+  font-size: 2rem;
   color: $primaryColor;
   margin-top: 36px;
 }
@@ -19,7 +20,7 @@
   }
 }
 
-.articles_div {
+.articles {
   margin-top: 40px;
 
   &__heading {

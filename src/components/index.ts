@@ -6,3 +6,4 @@ export { default as AuthForm } from "./AuthForm";
 export { default as Breadcrumbs } from "./Breadcrumbs";
 export { default as ArticleForm } from "./ArticleForm";
 export { default as ArticlesList } from "./ArticlesList";
+export { default as MultiCarousel } from "./MultiCarousel";
