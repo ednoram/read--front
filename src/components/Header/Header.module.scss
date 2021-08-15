@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     padding: 16px 0;
   }
 
@@ -19,5 +20,56 @@
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__hamburger_menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100vh;
+    background-color: white;
+    z-index: 999;
+    transition: 0.3s;
+    overflow-y: scroll;
+    touch-action: pan-y;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.05);
+    padding: 140px 0;
+
+    @include breakpoint(tablet) {
+      display: block;
+    }
+
+    .header__nav_list {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+      margin-top: 40px;
+    }
+  }
+
+  &__hamburger_menu_open {
+    width: 100vw;
+  }
+
+  &__hamburger_logo {
+    color: $primaryColor;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
   }
 }

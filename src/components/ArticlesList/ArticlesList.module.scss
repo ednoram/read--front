@@ -9,8 +9,17 @@
 .list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  gap: 28px;
   margin-top: 20px;
+
+  @include breakpoint(tablet-large) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @include breakpoint(tablet-small) {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
   &__article {
     height: 100%;
@@ -41,6 +50,7 @@
   }
 
   &__article_user {
+    word-break: break-all;
     margin-top: 10px;
 
     a {

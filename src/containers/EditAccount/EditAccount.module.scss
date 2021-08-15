@@ -41,5 +41,9 @@
     padding: 12px 36px;
     background: $primaryColor;
     color: white;
+
+    @include breakpoint(phone-large) {
+      width: 100%;
+    }
   }
 }

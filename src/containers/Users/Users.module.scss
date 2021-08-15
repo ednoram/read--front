@@ -4,6 +4,14 @@
   gap: 32px;
   margin-top: 40px;
 
+  @include breakpoint(tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include breakpoint(phone-large) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   &__item {
     min-height: 152px;
     display: flex;
@@ -15,9 +23,7 @@
 
   &__user_name {
     font-size: 1.5em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    word-break: break-word;
   }
 
   &__user_name:hover {
@@ -26,9 +32,7 @@
 
   &__user_email {
     color: $primaryColor;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    word-break: break-all;
     margin-top: 4px;
   }
 

@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&display=swap");
 
 @import "./normalize.scss";
+@import "./nprogress.scss";
 @import "./multi-carousel.scss";
 
 #__next {
@@ -23,12 +24,32 @@ a {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+
+  @include breakpoint(laptop-small) {
+    max-width: unset;
+    margin: 0;
+    padding: 0 28px;
+  }
+
+  @include breakpoint(phone-large) {
+    padding: 0 20px;
+  }
 }
 
 .container_small {
   max-width: 680px;
   width: 100%;
   margin: 0 auto;
+
+  @include breakpoint(tablet) {
+    max-width: unset;
+    margin: 0;
+    padding: 0 28px;
+  }
+
+  @include breakpoint(phone-large) {
+    padding: 0 20px;
+  }
 }
 
 .page_title {

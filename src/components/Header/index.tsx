@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { useState, FC } from "react";
 import Link from "next/link";
 
 import {
@@ -9,13 +9,18 @@ import {
   REGISTER_ROUTE,
   MY_ACCOUNT_ROUTE,
 } from "@constants";
-import { useIsAuthenticated } from "@hooks";
+import { useIsAuthenticated, useControlScroll } from "@hooks";
 
+import Hamburger from "./Hamburger";
 import styles from "./Header.module.scss";
 import NavigationLink from "./NavigationLink";
 
 const Header: FC = () => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
   const isAuthenticated = useIsAuthenticated();
+
+  useControlScroll(menuIsOpen, setMenuIsOpen);
 
   const authRelatedLinks = isAuthenticated ? (
     <>
@@ -54,6 +59,24 @@ const Header: FC = () => {
     </nav>
   );
 
+  const hamburger = (
+    <div className={styles.header__hamburger}>
+      <Hamburger menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
+      <div
+        className={`${styles.header__hamburger_menu} ${
+          menuIsOpen ? styles.header__hamburger_menu_open : ""
+        }`}
+      >
+        {menuIsOpen && (
+          <>
+            <p className={styles.header__hamburger_logo}>Read</p>
+            {navigation}
+          </>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <header className={styles.header}>
       <div className="container">
@@ -64,6 +87,7 @@ const Header: FC = () => {
             </Link>
           </div>
           {navigation}
+          {hamburger}
         </div>
       </div>
     </header>
