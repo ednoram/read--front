@@ -1,0 +1,23 @@
+{
+  "name": "Read",
+  "short_name": "Read",
+  "description": "A place to learn and share your knowledge",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6a5bdc",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo-180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

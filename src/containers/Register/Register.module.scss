@@ -1,16 +1,43 @@
+.responsive_hide {
+  @include breakpoint(tablet-large) {
+    display: none !important;
+  }
+}
+
+.responsive_show {
+  display: none !important;
+
+  @include breakpoint(tablet-large) {
+    display: flex !important;
+  }
+}
+
 .content {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
 
+  @include breakpoint(tablet-large) {
+    height: unset;
+    grid-template-columns: 1fr;
+  }
+
   &__left {
     background: $primaryColor;
     color: white;
-    padding: 140px 80px;
+    padding: 150px 50px;
+
+    @include breakpoint(tablet-large) {
+      padding: 28px 0;
+    }
   }
 
   &__right {
-    padding: 150px;
+    padding: 150px 0;
+
+    @include breakpoint(tablet-large) {
+      padding: 100px 0 140px;
+    }
   }
 
   &__logo {
@@ -23,6 +50,12 @@
     text-align: center;
     font-size: 1.25rem;
     margin-top: 20px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__have_account {
@@ -44,5 +77,17 @@
 
   &__continue_link:hover {
     text-decoration: underline;
+  }
+
+  &__responsive_links_div {
+    display: flex;
+    justify-content: center;
+    background: $primaryColor;
+    padding: 50px 0;
+
+    p {
+      color: white;
+      margin: 0;
+    }
   }
 }

@@ -9,19 +9,21 @@ interface Props {
   title: string;
   description: string;
   children?: ReactNode;
+  exactTitle?: boolean;
   noHeaderAndFooter?: boolean;
 }
 
 const Layout: FC<Props> = ({
   title,
-  description,
   children,
+  exactTitle,
+  description,
   noHeaderAndFooter,
 }) => {
   return (
     <>
       <Head>
-        <title>{title + " | Read"}</title>
+        <title>{exactTitle ? title : `${title} | Read`}</title>
         <meta name="description" content={description} />
       </Head>
       {noHeaderAndFooter ? (

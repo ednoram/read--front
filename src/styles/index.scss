@@ -56,6 +56,10 @@ a {
   font-size: 2.125rem;
   color: $primaryColor;
   text-align: center;
+
+  @include breakpoint(tablet) {
+    font-size: 2rem;
+  }
 }
 
 .error_div {

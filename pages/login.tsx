@@ -5,7 +5,8 @@ import { useProtectRoute } from "@hooks";
 import { LoginContainer } from "@containers";
 
 const PAGE_TITLE = "Log In";
-const PAGE_DESCRIPTION = "Login page";
+const PAGE_DESCRIPTION =
+  "Read is a website where you can learn and share your knowledge.";
 
 const Login: NextPage = () => {
   useProtectRoute(false);

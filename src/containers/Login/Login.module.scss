@@ -1,31 +1,76 @@
+.responsive_hide {
+  @include breakpoint(tablet-large) {
+    display: none !important;
+  }
+}
+
+.responsive_show {
+  display: none !important;
+
+  @include breakpoint(tablet-large) {
+    display: flex !important;
+  }
+}
+
 .content {
   height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
 
+  @include breakpoint(tablet-large) {
+    height: unset;
+    grid-template-columns: 1fr;
+  }
+
   &__left {
-    padding: 150px;
+    padding: 150px 0 200px;
+
+    @include breakpoint(tablet-large) {
+      padding: 100px 0 140px;
+    }
   }
 
   &__right {
     background: $primaryColor;
     color: white;
-    padding: 140px 80px;
+    padding: 150px 50px;
+
+    @include breakpoint(tablet-large) {
+      grid-row-start: 0;
+      grid-row-end: 1;
+      padding: 28px 0;
+    }
   }
 
   &__logo {
     font-size: 2.25rem;
     font-weight: bold;
     text-align: center;
+
+    @include breakpoint(tablet-large) {
+      font-size: 2rem;
+    }
   }
 
   &__description {
     text-align: center;
     font-size: 1.25rem;
     margin-top: 20px;
+
+    @include breakpoint(tablet-large) {
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__no_account_text {
+    text-align: center;
     margin-top: 40px;
   }
 
@@ -40,10 +85,23 @@
 
   &__continue_link {
     color: white;
+    text-align: center;
     margin-top: 28px;
   }
 
   &__continue_link:hover {
     text-decoration: underline;
+  }
+
+  &__responsive_links_div {
+    display: flex;
+    justify-content: center;
+    background: $primaryColor;
+    padding: 50px 0;
+
+    p {
+      color: white;
+      margin: 0;
+    }
   }
 }

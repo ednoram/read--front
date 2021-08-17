@@ -51,7 +51,7 @@ const MyAccount: FC = () => {
         <section>
           <div className={styles.content__my_articles}>
             <h2 className={styles.content__my_articles_heading}>
-              My Articles {myArticles && `(${myArticles.articles.length})`}
+              My Articles {myArticles && `(${myArticles?.articles.length})`}
             </h2>
             {loadingArticles ? (
               <div className={styles.content__list_loading_div}>

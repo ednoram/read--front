@@ -108,20 +108,32 @@ const ArticleForm: FC<Props> = ({ article }) => {
       <div>{cancelButton}</div>
       {loadingDiv}
       {errorDiv}
-      <input
-        maxLength={60}
-        value={state.title}
-        placeholder="Title"
-        onKeyDown={disableEnterSubmit}
-        className={styles.form__title_input}
-        onChange={(e) => setState({ ...state, title: e.target.value })}
-      />
-      <textarea
-        placeholder="Body"
-        value={state.body}
-        className={styles.form__body_textarea}
-        onChange={(e) => setState({ ...state, body: e.target.value })}
-      />
+      <div>
+        <label htmlFor="title">
+          <p className={styles.form__label_text}>Title:</p>
+        </label>
+        <input
+          name="title"
+          maxLength={60}
+          value={state.title}
+          placeholder="Title"
+          onKeyDown={disableEnterSubmit}
+          className={styles.form__title_input}
+          onChange={(e) => setState({ ...state, title: e.target.value })}
+        />
+      </div>
+      <div>
+        <label htmlFor="body">
+          <p className={styles.form__label_text}>Body:</p>
+        </label>
+        <textarea
+          name="body"
+          placeholder="Body"
+          value={state.body}
+          className={styles.form__body_textarea}
+          onChange={(e) => setState({ ...state, body: e.target.value })}
+        />
+      </div>
       <div className={styles.form__buttons}>
         <button
           onClick={() => window.scroll(0, 0)}

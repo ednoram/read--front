@@ -12,6 +12,10 @@ interface Props {
 }
 
 const ArticlesList: FC<Props> = ({ articles, carousel }) => {
+  if (!articles) {
+    return <p className={styles.nothing_was_found_p}>Nothing was found</p>;
+  }
+
   const list = carousel ? (
     <div className={styles.carousel_list}>
       <MultiCarousel>
@@ -32,11 +36,7 @@ const ArticlesList: FC<Props> = ({ articles, carousel }) => {
     </ul>
   );
 
-  return articles && articles.length > 0 ? (
-    list
-  ) : (
-    <p className={styles.nothing_was_found_p}>Nothing was found</p>
-  );
+  return articles && articles.length > 0 ? list : <></>;
 };
 
 export default ArticlesList;

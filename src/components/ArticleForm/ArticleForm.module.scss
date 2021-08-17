@@ -11,6 +11,11 @@
     margin: 0;
   }
 
+  &__label_text {
+    margin-bottom: 8px;
+    color: $primaryColor;
+  }
+
   &__title_input {
     width: 100%;
     padding: 10px 12px;

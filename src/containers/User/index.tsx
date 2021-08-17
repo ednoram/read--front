@@ -53,7 +53,7 @@ const User: FC<Props> = ({ user }) => {
             <Loader />
           </div>
         ) : (
-          <ArticlesList articles={userArticles.articles} carousel />
+          <ArticlesList articles={userArticles?.articles} carousel />
         )}
       </section>
     </div>
