@@ -67,3 +67,19 @@ export const UPDATE_USER_MUTATION = gql`
     }
   }
 `;
+
+export const SAVE_ARTICLE_MUTATION = gql`
+  mutation ($articleId: String!) {
+    saveArticle(articleId: $articleId) {
+      success
+    }
+  }
+`;
+
+export const REMOVE_SAVED_ARTICLE_MUTATION = gql`
+  mutation ($articleId: String!) {
+    removeSavedArticle(articleId: $articleId) {
+      success
+    }
+  }
+`;

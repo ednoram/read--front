@@ -20,19 +20,19 @@
     margin-top: 12px;
   }
 
-  &__my_articles {
+  &__articles {
     margin-top: 40px;
   }
 
-  &__my_articles_heading {
+  &__articles_heading {
     color: $primaryColor;
   }
 
   &__list_loading_div {
+    min-height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
   }
 
   &__logout_button {

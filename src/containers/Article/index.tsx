@@ -9,6 +9,7 @@ import { useGetUser } from "@hooks";
 import { Breadcrumbs } from "@components";
 import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
 
+import SaveButton from "./SaveButton";
 import styles from "./Article.module.scss";
 
 interface Props {
@@ -16,9 +17,10 @@ interface Props {
 }
 
 const Article: FC<Props> = ({ article }) => {
+  const [showingAll, setShowingAll] = useState(false);
+
   const user = useGetUser();
   const { asPath } = useRouter();
-  const [showingAll, setShowingAll] = useState(false);
   const articleElementRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -58,16 +60,42 @@ const Article: FC<Props> = ({ article }) => {
     });
   };
 
-  const editLink = user?.email === article.userEmail && (
-    <Link href={`${asPath}/edit`}>
-      <a className="color_primary">Edit Article</a>
-    </Link>
+  const editLink =
+    user?.email === article.userEmail ? (
+      <div>
+        <Link href={`${asPath}/edit`}>
+          <a className="color_primary">Edit Article</a>
+        </Link>
+      </div>
+    ) : (
+      <div></div>
+    );
+
+  const userActions = user?.email && (
+    <div className="flex_space_between">
+      {editLink}
+      <SaveButton article={article} />
+    </div>
+  );
+
+  const hideGradient = !showingAll && (
+    <>
+      <div className={styles.content__body_hide_gradient} />
+      <div className="flex_center">
+        <button
+          onClick={() => setShowingAll(true)}
+          className={styles.content__continue_reading_button}
+        >
+          Continue Reading
+        </button>
+      </div>
+    </>
   );
 
   return (
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
-      {editLink}
+      {userActions}
       <div className={styles.content}>
         <h1 className={styles.content__title}>{article.title}</h1>
         <p className={styles.content__user}>
@@ -81,19 +109,7 @@ const Article: FC<Props> = ({ article }) => {
           <p>Updated At: {getDateString(article.updatedAt)}</p>
         </div>
         <article ref={articleElementRef} className={styles.content__body} />
-        {!showingAll && (
-          <>
-            <div className={styles.content__body_fade} />
-            <div className="flex_center">
-              <button
-                onClick={() => setShowingAll(true)}
-                className={styles.content__continue_reading_button}
-              >
-                Continue Reading
-              </button>
-            </div>
-          </>
-        )}
+        {hideGradient}
       </div>
     </div>
   );

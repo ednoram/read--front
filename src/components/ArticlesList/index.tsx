@@ -12,7 +12,7 @@ interface Props {
 }
 
 const ArticlesList: FC<Props> = ({ articles, carousel }) => {
-  if (!articles) {
+  if (!articles || articles.length === 0) {
     return <p className={styles.nothing_was_found_p}>Nothing was found</p>;
   }
 

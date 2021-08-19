@@ -55,3 +55,22 @@ export const USERS_QUERY = gql`
     }
   }
 `;
+
+export const SAVED_ARTICLES_QUERY = gql`
+  {
+    savedArticles {
+      _id
+      body
+      title
+      userEmail
+    }
+  }
+`;
+
+export const SAVED_ARTICLES_IDS_QUERY = gql`
+  {
+    savedArticles {
+      _id
+    }
+  }
+`;

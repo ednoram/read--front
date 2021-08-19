@@ -11,6 +11,8 @@ const useLoginWithToken = (): void => {
     onCompleted: (data) => {
       if (!data.loginWithToken) {
         localStorage.removeItem("isAuthenticated");
+      } else {
+        localStorage.setItem("isAuthenticated", "true");
       }
     },
   });

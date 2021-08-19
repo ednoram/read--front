@@ -84,6 +84,12 @@ a {
   align-items: center;
 }
 
+.flex_space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .flex_right {
   display: flex;
   align-items: center;

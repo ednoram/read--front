@@ -20,7 +20,7 @@ const ListItem: FC<Props> = ({ article }) => {
         <Link href={articleHref}>
           <a className={styles.list__article_title}>{title}</a>
         </Link>
-        <p className={styles.list__article_body}>{body.slice(0, 60)}</p>
+        <p className={styles.list__article_body}>{body}</p>
         <p className={styles.list__article_user}>
           By:{" "}
           <Link href={`${USERS_ROUTE}/${userEmail}`}>

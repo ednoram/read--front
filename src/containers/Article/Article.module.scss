@@ -1,6 +1,15 @@
 .content {
   margin-top: 28px;
 
+  &__save_button {
+    background: none;
+    color: $primaryColor;
+  }
+
+  &__save_button:hover {
+    opacity: 0.6;
+  }
+
   &__title {
     color: $primaryColor;
     word-break: break-word;
@@ -53,7 +62,7 @@
     }
   }
 
-  &__body_fade {
+  &__body_hide_gradient {
     position: relative;
     height: 250px;
     background: linear-gradient(
