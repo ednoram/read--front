@@ -9,7 +9,7 @@ import {
 } from "@graphql";
 import { IArticle } from "@types";
 import { Loader } from "@components";
-import { ARTICLES_ROUTE } from "@constants";
+import { ARTICLES_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 import { disableEnterSubmit, disableRouteChangeEvent } from "@utils";
 
 import styles from "./ArticleForm.module.scss";
@@ -43,7 +43,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
       onError: () => {},
       onCompleted: () => {
         disableRouteChangeEvent();
-        router.push("/");
+        router.push(MY_ACCOUNT_ROUTE);
       },
     });
 
@@ -57,8 +57,8 @@ const ArticleForm: FC<Props> = ({ article }) => {
     setErrorMessage(graphQLErrors ? graphQLErrors[0]?.message : null);
   }, [errorDelete]);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
     const _id = article?._id || "";
     const { title, body } = state;
     submit({ variables: { _id, title, body } });

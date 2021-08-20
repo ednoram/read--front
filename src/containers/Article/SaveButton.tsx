@@ -7,6 +7,7 @@ import {
   REMOVE_SAVED_ARTICLE_MUTATION,
 } from "@graphql";
 import { IArticle } from "@types";
+import { Loader } from "@components";
 
 import styles from "./Article.module.scss";
 
@@ -55,7 +56,7 @@ const SaveButton: FC<Props> = ({ article }) => {
       {articleIsSaved ? "Remove From Saved" : "Save"}
     </button>
   ) : (
-    <></>
+    <Loader className={styles.content__save_button_loader} />
   );
 };
 

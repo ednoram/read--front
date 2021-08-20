@@ -27,8 +27,8 @@ const Form: FC = () => {
     }
   }, [user]);
 
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = (event: FormEvent) => {
+    event.preventDefault();
     window.scroll(0, 0);
 
     const { name, about } = state;

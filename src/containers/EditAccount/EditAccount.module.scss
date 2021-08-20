@@ -1,12 +1,12 @@
-.cancel_button {
-  background: none;
-  color: $red;
-  padding: 0;
-  margin-top: 20px;
-}
-
 .content {
   margin-top: 28px;
+
+  &__cancel_button {
+    background: none;
+    color: $red;
+    padding: 0;
+    margin-top: 20px;
+  }
 
   &__form {
     width: 100%;
@@ -21,8 +21,8 @@
   }
 
   &__label_text {
-    margin-bottom: 8px;
     color: $primaryColor;
+    margin-bottom: 8px;
   }
 
   &__input {
@@ -45,5 +45,9 @@
     @include breakpoint(phone-large) {
       width: 100%;
     }
+  }
+
+  &__links {
+    margin-top: 20px;
   }
 }

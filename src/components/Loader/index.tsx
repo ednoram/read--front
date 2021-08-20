@@ -2,9 +2,13 @@ import { FC } from "react";
 
 import styles from "./Loader.module.scss";
 
-const Loader: FC = () => {
+interface Props {
+  className?: string;
+}
+
+const Loader: FC<Props> = ({ className }) => {
   return (
-    <div className={styles.lds_spinner}>
+    <div className={`${styles.lds_spinner} ${className || ""}`}>
       <div />
       <div />
       <div />

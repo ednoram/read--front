@@ -1,8 +1,13 @@
 import { FC } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
+import {
+  MY_ACCOUNT_ROUTE,
+  EDIT_ACCOUNT_ROUTE,
+  CHANGE_PASSWORD_ROUTE,
+} from "@constants";
 import { Breadcrumbs } from "@components";
-import { EDIT_ACCOUNT_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 
 import Form from "./Form";
 import styles from "./EditAccount.module.scss";
@@ -20,15 +25,27 @@ const EditAccount: FC = () => {
     router.push(MY_ACCOUNT_ROUTE);
   };
 
+  const links = (
+    <div className={styles.content__links}>
+      <Link href={CHANGE_PASSWORD_ROUTE}>
+        <a className="color_primary">Change Password</a>
+      </Link>
+    </div>
+  );
+
   return (
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
       <div className={styles.content}>
         <h1 className="page_title">Edit Account</h1>
-        <button onClick={handleCancel} className={styles.cancel_button}>
+        <button
+          onClick={handleCancel}
+          className={styles.content__cancel_button}
+        >
           Cancel
         </button>
         <Form />
+        {links}
       </div>
     </div>
   );

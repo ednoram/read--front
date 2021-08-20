@@ -33,29 +33,37 @@ const User: FC<Props> = ({ user }) => {
     [asPath]
   );
 
+  const userInfoSection = (
+    <section>
+      <h1 className={styles.title}>{user.name}</h1>
+      <p className={styles.user_email}>{user.email}</p>
+      {user.about && (
+        <div className={styles.user_about}>
+          <h2 className={styles.user_about__heading}>About</h2>
+          <p className={styles.user_about__text}>{user.about}</p>
+        </div>
+      )}
+    </section>
+  );
+
+  const articlesSection = (
+    <section className={styles.articles}>
+      <h2 className={styles.articles__heading}>Articles</h2>
+      {loadingArticles ? (
+        <div className={styles.articles__loading_div}>
+          <Loader />
+        </div>
+      ) : (
+        <ArticlesList articles={userArticles?.articles} carousel />
+      )}
+    </section>
+  );
+
   return (
     <div className="container">
       <Breadcrumbs links={breadcrumbsLinks} />
-      <section>
-        <h1 className={styles.title}>{user.name}</h1>
-        <p className={styles.user_email}>{user.email}</p>
-        {user.about && (
-          <div className={styles.user_about}>
-            <h2 className={styles.user_about__heading}>About</h2>
-            <p className={styles.user_about__text}>{user.about}</p>
-          </div>
-        )}
-      </section>
-      <section className={styles.articles}>
-        <h2 className={styles.articles__heading}>Articles</h2>
-        {loadingArticles ? (
-          <div className={styles.articles__loading_div}>
-            <Loader />
-          </div>
-        ) : (
-          <ArticlesList articles={userArticles?.articles} carousel />
-        )}
-      </section>
+      {userInfoSection}
+      {articlesSection}
     </div>
   );
 };

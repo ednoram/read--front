@@ -10,6 +10,11 @@
     opacity: 0.6;
   }
 
+  &__save_button_loader {
+    transform: scale(0.35);
+    margin: -30px;
+  }
+
   &__title {
     color: $primaryColor;
     word-break: break-word;

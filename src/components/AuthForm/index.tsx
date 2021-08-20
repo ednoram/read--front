@@ -44,7 +44,7 @@ const AuthForm: FC<Props> = ({ type }) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submit({ variables: { ...state } });
+    submit({ variables: state });
   };
 
   const graphQLErrors = error?.graphQLErrors;
