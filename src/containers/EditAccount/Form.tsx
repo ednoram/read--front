@@ -5,7 +5,11 @@ import { useGetUser } from "@hooks";
 import { Loader } from "@components";
 import { MY_ACCOUNT_ROUTE } from "@constants";
 import { UPDATE_USER_MUTATION } from "@graphql";
-import { disableEnterSubmit, disableRouteChangeEvent } from "@utils";
+import {
+  disableEnterSubmit,
+  disableRouteChangeEvent,
+  getGraphqlErrorMessage,
+} from "@utils";
 
 import styles from "./EditAccount.module.scss";
 
@@ -35,8 +39,7 @@ const Form: FC = () => {
     updateUser({ variables: { name, about } });
   };
 
-  const graphQLErrors = error?.graphQLErrors;
-  const errorMessage = graphQLErrors ? graphQLErrors[0]?.message : null;
+  const errorMessage = getGraphqlErrorMessage(error);
 
   const errorDiv = errorMessage && (
     <div className="error_div">

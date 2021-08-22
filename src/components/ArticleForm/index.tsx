@@ -3,6 +3,11 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
 import {
+  disableEnterSubmit,
+  getGraphqlErrorMessage,
+  disableRouteChangeEvent,
+} from "@utils";
+import {
   POST_ARTICLE_MUTATION,
   UPDATE_ARTICLE_MUTATION,
   DELETE_ARTICLE_MUTATION,
@@ -10,7 +15,6 @@ import {
 import { IArticle } from "@types";
 import { Loader } from "@components";
 import { ARTICLES_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
-import { disableEnterSubmit, disableRouteChangeEvent } from "@utils";
 
 import styles from "./ArticleForm.module.scss";
 
@@ -48,13 +52,13 @@ const ArticleForm: FC<Props> = ({ article }) => {
     });
 
   useEffect(() => {
-    const graphQLErrors = errorSubmit?.graphQLErrors;
-    setErrorMessage(graphQLErrors ? graphQLErrors[0]?.message : null);
+    const errorMessage = getGraphqlErrorMessage(errorSubmit);
+    setErrorMessage(errorMessage);
   }, [errorSubmit]);
 
   useEffect(() => {
-    const graphQLErrors = errorDelete?.graphQLErrors;
-    setErrorMessage(graphQLErrors ? graphQLErrors[0]?.message : null);
+    const errorMessage = getGraphqlErrorMessage(errorDelete);
+    setErrorMessage(errorMessage);
   }, [errorDelete]);
 
   const handleSubmit = (event: FormEvent) => {
@@ -65,7 +69,9 @@ const ArticleForm: FC<Props> = ({ article }) => {
   };
 
   const handleDeleteClick = () => {
-    if (article && confirm("Are you sure you want to delete article?")) {
+    const confirmed = confirm("Are you sure you want to delete article?");
+
+    if (article && confirmed) {
       window.scroll(0, 0);
       deleteArticle({ variables: { _id: article._id } });
     }

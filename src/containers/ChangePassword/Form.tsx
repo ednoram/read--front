@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
 import { MY_ACCOUNT_ROUTE } from "@constants";
-import { disableRouteChangeEvent } from "@utils";
+import { disableRouteChangeEvent, getGraphqlErrorMessage } from "@utils";
 import { CHANGE_PASSWORD_MUTATION } from "@graphql";
 
 import styles from "./ChangePassword.module.scss";
@@ -44,8 +44,7 @@ const Form: FC = () => {
     changeUserPassword({ variables: state });
   };
 
-  const graphQLErrors = error?.graphQLErrors;
-  const errorMessage = graphQLErrors && graphQLErrors[0]?.message;
+  const errorMessage = getGraphqlErrorMessage(error);
 
   const errorDiv = errorMessage && (
     <div className="error_div">

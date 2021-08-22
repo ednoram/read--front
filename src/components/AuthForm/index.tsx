@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
 import { LOGIN_ROUTE } from "@constants";
+import { getGraphqlErrorMessage } from "@utils";
 import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
 
 import styles from "./AuthForm.module.scss";
@@ -47,8 +48,7 @@ const AuthForm: FC<Props> = ({ type }) => {
     submit({ variables: state });
   };
 
-  const graphQLErrors = error?.graphQLErrors;
-  const errorMessage = graphQLErrors && graphQLErrors[0]?.message;
+  const errorMessage = getGraphqlErrorMessage(error);
 
   const errorDiv = errorMessage && (
     <div className="error_div">

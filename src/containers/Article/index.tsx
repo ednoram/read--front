@@ -5,10 +5,11 @@ import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 import { IArticle } from "@types";
-import { useGetUser } from "@hooks";
+import { useGetUser, useHideLongArticle } from "@hooks";
 import { Breadcrumbs } from "@components";
 import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
 
+import Comments from "./Comments";
 import SaveButton from "./SaveButton";
 import styles from "./Article.module.scss";
 
@@ -17,31 +18,28 @@ interface Props {
 }
 
 const Article: FC<Props> = ({ article }) => {
-  const [showingAll, setShowingAll] = useState(false);
+  const [showingAll, setShowingAll] = useState(true);
 
   const user = useGetUser();
   const { asPath } = useRouter();
-  const articleElementRef = useRef<HTMLParagraphElement>(null);
+  const articleElementRef = useRef<HTMLDivElement>(null);
+
+  useHideLongArticle(articleElementRef, showingAll);
 
   useEffect(() => {
     const markdownString = article.body.replaceAll("# ", "## ");
+
     render(
       <ReactMarkdown children={markdownString} />,
       articleElementRef.current
     );
-  }, []);
 
-  useEffect(() => {
-    if (articleElementRef.current) {
-      if (showingAll) {
-        articleElementRef.current.style.height = "unset";
-        articleElementRef.current.style.overflow = "unset";
-      } else {
-        articleElementRef.current.style.height = "600px";
-        articleElementRef.current.style.overflow = "hidden";
+    setTimeout(() => {
+      if (Number(articleElementRef.current?.clientHeight) > 600) {
+        setShowingAll(false);
       }
-    }
-  }, [showingAll, articleElementRef.current?.clientHeight]);
+    });
+  }, []);
 
   const breadcrumbsLinks = useMemo(
     () => [
@@ -80,11 +78,11 @@ const Article: FC<Props> = ({ article }) => {
 
   const hideGradient = !showingAll && (
     <>
-      <div className={styles.content__body_hide_gradient} />
+      <div className={styles.article_body__hide_gradient} />
       <div className="flex_center">
         <button
           onClick={() => setShowingAll(true)}
-          className={styles.content__continue_reading_button}
+          className={styles.article_body__continue_reading_button}
         >
           Continue Reading
         </button>
@@ -96,21 +94,26 @@ const Article: FC<Props> = ({ article }) => {
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
       {userActions}
-      <div className={styles.content}>
-        <h1 className={styles.content__title}>{article.title}</h1>
-        <p className={styles.content__user}>
+      <section className={styles.top_section}>
+        <h1 className={styles.top_section__title}>{article.title}</h1>
+        <p className={styles.top_section__user}>
           By:{" "}
           <Link href={`${USERS_ROUTE}/${article.userEmail}`}>
             <a>{article.userEmail}</a>
           </Link>
         </p>
-        <div className={styles.content__dates}>
+        <div className={styles.top_section__dates}>
           <p>Created At: {getDateString(article.createdAt)}</p>
           <p>Updated At: {getDateString(article.updatedAt)}</p>
         </div>
-        <article ref={articleElementRef} className={styles.content__body} />
+      </section>
+      <section>
+        <article ref={articleElementRef} className={styles.article_body} />
         {hideGradient}
-      </div>
+      </section>
+      <section>
+        <Comments />
+      </section>
     </div>
   );
 };

@@ -51,12 +51,12 @@ const SaveButton: FC<Props> = ({ article }) => {
     <button
       disabled={loadingSave}
       onClick={handleSaveButtonClick}
-      className={styles.content__save_button}
+      className={styles.top_section__save_button}
     >
       {articleIsSaved ? "Remove From Saved" : "Save"}
     </button>
   ) : (
-    <Loader className={styles.content__save_button_loader} />
+    <Loader className={styles.top_section__save_button_loader} />
   );
 };
 
