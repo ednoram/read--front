@@ -32,6 +32,8 @@ const MyAccount: FC = () => {
     { onError: () => {}, fetchPolicy: "no-cache" }
   );
 
+  const myArticles = myArticlesData?.articles?.articles;
+
   const handleLogout = () => {
     if (confirm("Are you sure you want to log out?")) {
       logout();
@@ -48,12 +50,12 @@ const MyAccount: FC = () => {
     <section>
       <div className={styles.content__articles}>
         <h2 className={styles.content__articles_heading}>
-          My Articles {myArticlesData && `(${myArticlesData?.articles.length})`}
+          My Articles {myArticles && `(${myArticles.length})`}
         </h2>
         {loadingMyArticles ? (
           loadingDiv
         ) : (
-          <ArticlesList articles={myArticlesData?.articles} carousel />
+          <ArticlesList articles={myArticles} carousel />
         )}
       </div>
     </section>

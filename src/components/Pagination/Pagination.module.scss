@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  @include breakpoint(tablet-small) {
+    display: none;
+  }
+
+  &__page_button {
+    width: 40px;
+    height: 40px;
+    background: none;
+    color: $primaryColor;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  &__active_page_button {
+    @extend .content__page_button;
+    background: $primaryColor;
+    color: white;
+  }
+}

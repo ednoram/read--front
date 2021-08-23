@@ -53,8 +53,10 @@ const Users: FC<Props> = ({ users }) => {
   return (
     <div className="container">
       <Breadcrumbs links={breadcrumbsLinks} />
-      <h1 className="page_title">Users</h1>
-      {list}
+      <section>
+        <h1 className="page_title">Users</h1>
+      </section>
+      <section>{list}</section>
     </div>
   );
 };

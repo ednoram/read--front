@@ -10,8 +10,12 @@ interface Props {
 const EditArticle: FC<Props> = ({ article }) => {
   return (
     <div className="container_small">
-      <h1 className="page_title">Edit Article</h1>
-      <ArticleForm article={article} />
+      <section>
+        <h1 className="page_title">Edit Article</h1>
+      </section>
+      <section>
+        <ArticleForm article={article} />
+      </section>
     </div>
   );
 };

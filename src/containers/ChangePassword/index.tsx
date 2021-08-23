@@ -17,13 +17,17 @@ const ChangePassword: FC = () => {
   return (
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
-      <h1 className="page_title">Change Password</h1>
-      <div className={styles.cancel_link_div}>
-        <Link href={MY_ACCOUNT_ROUTE}>
-          <a>Cancel</a>
-        </Link>
-      </div>
-      <Form />
+      <section>
+        <h1 className="page_title">Change Password</h1>
+        <div className={styles.cancel_link_div}>
+          <Link href={MY_ACCOUNT_ROUTE}>
+            <a>Cancel</a>
+          </Link>
+        </div>
+      </section>
+      <section>
+        <Form />
+      </section>
     </div>
   );
 };

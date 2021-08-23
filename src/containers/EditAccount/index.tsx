@@ -37,15 +37,19 @@ const EditAccount: FC = () => {
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
       <div className={styles.content}>
-        <h1 className="page_title">Edit Account</h1>
-        <button
-          onClick={handleCancel}
-          className={styles.content__cancel_button}
-        >
-          Cancel
-        </button>
-        <Form />
-        {links}
+        <section>
+          <h1 className="page_title">Edit Account</h1>
+          <button
+            onClick={handleCancel}
+            className={styles.content__cancel_button}
+          >
+            Cancel
+          </button>
+        </section>
+        <section>
+          <Form />
+        </section>
+        <section>{links}</section>
       </div>
     </div>
   );

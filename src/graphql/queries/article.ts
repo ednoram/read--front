@@ -14,12 +14,15 @@ export const ARTICLE_QUERY = gql`
 `;
 
 export const ARTICLES_QUERY = gql`
-  query ($userEmail: String) {
-    articles(userEmail: $userEmail) {
-      _id
-      body
-      title
-      userEmail
+  query ($userEmail: String, $limit: Int, $offset: Int) {
+    articles(userEmail: $userEmail, limit: $limit, offset: $offset) {
+      totalCount
+      articles {
+        _id
+        body
+        title
+        userEmail
+      }
     }
   }
 `;

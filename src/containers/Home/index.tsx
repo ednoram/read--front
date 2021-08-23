@@ -3,7 +3,9 @@ import { FC } from "react";
 const Home: FC = () => {
   return (
     <div className="container">
-      <h1 className="page_title">Home</h1>
+      <section>
+        <h1 className="page_title">Home</h1>
+      </section>
     </div>
   );
 };
