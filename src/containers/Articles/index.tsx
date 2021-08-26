@@ -1,14 +1,21 @@
 import { useState, useEffect, FC } from "react";
-import { nanoid } from "nanoid";
 import { useQuery } from "@apollo/client";
 
+import {
+  Loader,
+  Searchbox,
+  Pagination,
+  Breadcrumbs,
+  ArticlesList,
+} from "@components";
 import { IArticle } from "@types";
 import { useWindowSize } from "@hooks";
 import { ARTICLES_QUERY } from "@graphql";
 import { ARTICLES_ROUTE } from "@constants";
-import { ArticlesList, Breadcrumbs, Loader, Pagination } from "@components";
 
 import styles from "./Articles.module.scss";
+import CloseIcon from "@assets/CloseIcon.svg";
+import LimitButtonsDiv from "./LimitButtonsDiv";
 
 const breadcrumbsLinks = [
   { text: "Home", href: "/" },
@@ -22,19 +29,20 @@ const Articles: FC = () => {
   const [limit, setLimit] = useState(limitOptions[1]);
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [showLimitControls, setShowLimitControls] = useState(true);
+  const [searchFilter, setSearchFilter] = useState<string | null>(null);
 
   const { data: articlesData, loading } = useQuery(ARTICLES_QUERY, {
-    variables: { limit, offset },
+    variables: { limit, offset, searchFilter },
   });
 
   const windowSize = useWindowSize();
 
   useEffect(() => {
     setOffset(0);
-  }, [limit]);
+  }, [limit, searchFilter]);
 
   useEffect(() => {
-    if (windowSize.width > 560) {
+    if (windowSize.width && windowSize.width > 560) {
       window.scroll(0, 0);
     }
   }, [offset, limit]);
@@ -58,6 +66,7 @@ const Articles: FC = () => {
     if (!windowSize || !articlesData?.articles?.articles) return;
 
     if (
+      windowSize.width &&
       windowSize.width <= 560 &&
       !articles.includes(articlesData.articles.articles[0])
     ) {
@@ -81,42 +90,42 @@ const Articles: FC = () => {
     </div>
   );
 
-  const limitButtonsDiv = showLimitControls && (
-    <div className={styles.list__limit_buttons}>
-      <p>Items per page:</p>
-      <ul>
-        {limitOptions.map((option) => (
-          <li key={nanoid()}>
-            <button
-              onClick={() => setLimit(option)}
-              className={
-                option === limit
-                  ? styles.list__limit_button_active
-                  : styles.list__limit_button
-              }
-            >
-              {option}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-
   const showMoreButton = totalArticlesCount > articles.length && (
     <div className={styles.list__show_more}>
       <button onClick={() => setOffset(offset + limit)}>Show More</button>
     </div>
   );
 
+  const listTopSettings = (
+    <div className={styles.list__top_settings_div}>
+      <Searchbox setSearchFilter={setSearchFilter} />
+      {showLimitControls && (
+        <LimitButtonsDiv
+          limit={limit}
+          setLimit={setLimit}
+          limitOptions={limitOptions}
+        />
+      )}
+    </div>
+  );
+
   const listSection = (
     <section className={styles.list}>
-      {(loading && windowSize.width > 560) ||
+      {listTopSettings}
+      {(loading && windowSize.width && windowSize.width > 560) ||
       (loading && articles.length === 0) ? (
         loadingDiv
       ) : (
-        <>
-          {limitButtonsDiv}
+        <div>
+          {searchFilter && (
+            <p className={styles.list__showing_matches_p}>
+              Showing matches for: &quot;{searchFilter}&quot;
+              <CloseIcon
+                onClick={() => setSearchFilter(null)}
+                className={styles.list__clear_filter_icon}
+              />
+            </p>
+          )}
           <ArticlesList articles={articles} />
           {loading && smallLoadingDiv}
           {totalArticlesCount > limit && (
@@ -128,7 +137,7 @@ const Articles: FC = () => {
             />
           )}
           {showMoreButton}
-        </>
+        </div>
       )}
     </section>
   );

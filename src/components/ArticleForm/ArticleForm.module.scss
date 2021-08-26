@@ -56,9 +56,10 @@
   }
 
   &__delete_button {
-    background: $red;
-    color: white;
-    padding: 12px 28px;
+    background: none;
+    color: $red;
+    padding: 10px 20px;
+    margin: 0 18px;
 
     @include breakpoint(phone-large) {
       width: 100%;

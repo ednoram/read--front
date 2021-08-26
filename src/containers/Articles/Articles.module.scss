@@ -7,9 +7,17 @@
     padding: 50px 0;
   }
 
+  &__top_settings_div {
+    display: flex;
+    justify-content: space-between;
+
+    @include breakpoint(tablet-large) {
+      justify-content: center;
+    }
+  }
+
   &__limit_buttons {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 10px;
 
@@ -32,6 +40,18 @@
     @extend .list__limit_button;
     background: $primaryColor;
     color: white;
+  }
+
+  &__showing_matches_p {
+    padding-left: 2px;
+    margin-top: 20px;
+  }
+
+  &__clear_filter_icon {
+    width: 20px;
+    fill: $primaryColor;
+    cursor: pointer;
+    margin: 0 0 -4px 4px;
   }
 
   &__show_more {

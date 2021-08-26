@@ -8,9 +8,11 @@ const useRefreshApolloStore = (
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       apolloClient.resetStore();
     });
+
+    return () => clearTimeout(timer);
   }, [router]);
 };
 

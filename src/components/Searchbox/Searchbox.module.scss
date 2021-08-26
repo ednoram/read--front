@@ -1,0 +1,32 @@
+.form {
+  width: 350px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  @include breakpoint(tablet-small) {
+    width: 100%;
+  }
+
+  &__input_container {
+    border: $border;
+    padding: 10px 12px;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  &__submit_button {
+    width: 42px;
+    display: grid;
+    place-items: center;
+    background: $primaryColor;
+    color: white;
+    padding: 10px;
+  }
+
+  &__search_icon {
+    width: 20px;
+    fill: white;
+  }
+}

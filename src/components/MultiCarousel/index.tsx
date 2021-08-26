@@ -22,7 +22,11 @@ const responsive = {
 
 const MultiCarousel: FC = ({ children }) => {
   return (
-    <Carousel draggable={false} responsive={responsive}>
+    <Carousel
+      draggable={false}
+      responsive={responsive}
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+    >
       {children}
     </Carousel>
   );

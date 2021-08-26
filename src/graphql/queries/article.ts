@@ -14,8 +14,13 @@ export const ARTICLE_QUERY = gql`
 `;
 
 export const ARTICLES_QUERY = gql`
-  query ($userEmail: String, $limit: Int, $offset: Int) {
-    articles(userEmail: $userEmail, limit: $limit, offset: $offset) {
+  query ($userEmail: String, $searchFilter: String, $limit: Int, $offset: Int) {
+    articles(
+      limit: $limit
+      offset: $offset
+      userEmail: $userEmail
+      searchFilter: $searchFilter
+    ) {
       totalCount
       articles {
         _id
