@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { IUser } from "@types";
 import { USERS_QUERY } from "@graphql";
 import { USERS_ROUTE } from "@constants";
+import CloseIcon from "@assets/CloseIcon.svg";
 import { Breadcrumbs, Searchbox, Loader } from "@components";
 
 import styles from "./Users.module.scss";
@@ -114,6 +115,10 @@ const Users: FC = () => {
         {searchFilter && (
           <p className={styles.list_section__showing_matches_p}>
             Showing matches for {`"${searchFilter}"`}
+            <CloseIcon
+              onClick={() => setSearchFilter(null)}
+              className={styles.list_section__clear_filter_icon}
+            />
           </p>
         )}
         {showList && list}

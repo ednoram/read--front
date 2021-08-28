@@ -12,6 +12,13 @@
     margin-top: 20px;
   }
 
+  &__clear_filter_icon {
+    width: 20px;
+    fill: $red;
+    cursor: pointer;
+    margin: 0 0 -4px 4px;
+  }
+
   &__list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
