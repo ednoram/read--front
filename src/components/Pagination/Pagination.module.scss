@@ -22,4 +22,13 @@
     background: $primaryColor;
     color: white;
   }
+
+  &__right_arrow_icon {
+    fill: $primaryColor;
+  }
+
+  &__left_arrow_icon {
+    @extend .content__right_arrow_icon;
+    transform: rotate(180deg);
+  }
 }

@@ -5,10 +5,11 @@ import SearchIcon from "@assets/SearchIcon.svg";
 import styles from "./Searchbox.module.scss";
 
 interface Props {
+  placeholder: string;
   setSearchFilter: Dispatch<SetStateAction<string | null>>;
 }
 
-const Searchbox: FC<Props> = ({ setSearchFilter }) => {
+const Searchbox: FC<Props> = ({ setSearchFilter, placeholder }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (event: FormEvent) => {
@@ -27,7 +28,7 @@ const Searchbox: FC<Props> = ({ setSearchFilter }) => {
         <input
           maxLength={60}
           value={inputValue}
-          placeholder="Search by title"
+          placeholder={placeholder}
           onChange={(e) => setInputValue(e.target.value)}
         />
       </div>

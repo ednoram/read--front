@@ -33,6 +33,8 @@ const User: FC<Props> = ({ user }) => {
     [asPath]
   );
 
+  const articles = userArticles?.articles.articles;
+
   const userInfoSection = (
     <section>
       <h1 className={styles.title}>{user.name}</h1>
@@ -48,13 +50,15 @@ const User: FC<Props> = ({ user }) => {
 
   const articlesSection = (
     <section className={styles.articles}>
-      <h2 className={styles.articles__heading}>Articles</h2>
+      <h2 className={styles.articles__heading}>
+        Articles {articles && `(${articles.length})`}
+      </h2>
       {loadingArticles ? (
         <div className={styles.articles__loading_div}>
           <Loader />
         </div>
       ) : (
-        <ArticlesList articles={userArticles?.articles} carousel />
+        <ArticlesList articles={articles} carousel />
       )}
     </section>
   );

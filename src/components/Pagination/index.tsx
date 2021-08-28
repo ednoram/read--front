@@ -2,6 +2,7 @@ import { FC, Dispatch, SetStateAction } from "react";
 import { nanoid } from "nanoid";
 
 import { getPaginationButtonNames } from "@utils";
+import RightArrowIcon from "@assets/RightArrowIcon.svg";
 
 import styles from "./Pagination.module.scss";
 
@@ -58,7 +59,7 @@ const Pagination: FC<Props> = ({
           onClick={handlePrevPageClick}
           className={styles.content__page_button}
         >
-          {`<`}
+          <RightArrowIcon className={styles.content__left_arrow_icon} />
         </button>
       </li>
       {numberButtons}
@@ -68,7 +69,7 @@ const Pagination: FC<Props> = ({
           className={styles.content__page_button}
           disabled={offset + limit >= totalItemsCount}
         >
-          {`>`}
+          <RightArrowIcon className={styles.content__right_arrow_icon} />
         </button>
       </li>
     </ul>

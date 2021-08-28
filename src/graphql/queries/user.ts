@@ -22,12 +22,15 @@ export const USER_QUERY = gql`
 `;
 
 export const USERS_QUERY = gql`
-  {
-    users {
-      _id
-      name
-      email
-      about
+  query ($searchFilter: String, $limit: Int, $offset: Int) {
+    users(searchFilter: $searchFilter, limit: $limit, offset: $offset) {
+      totalCount
+      users {
+        _id
+        name
+        email
+        about
+      }
     }
   }
 `;

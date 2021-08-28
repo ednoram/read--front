@@ -7,5 +7,6 @@ export { default as useLoginWithToken } from "./useLoginWithToken";
 export { default as useLogoutFunction } from "./useLogoutFunction";
 export { default as useHideLongArticle } from "./useHideLongArticle";
 export { default as useIsAuthenticated } from "./useIsAuthenticated";
+export { default as useConfigListParams } from "./useConfigListParams";
 export { default as useRefreshApolloStore } from "./useRefreshApolloStore";
 export { default as useConfirmBeforeLeaving } from "./useConfirmBeforeLeaving";
