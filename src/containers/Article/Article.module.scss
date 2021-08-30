@@ -1,13 +1,23 @@
 .top_section {
   margin-top: 28px;
 
+  &__edit_icon {
+    width: 22px;
+    fill: $primaryColor;
+    margin: 0 4px -4px 0;
+  }
+
   &__save_button {
     background: none;
-    color: $primaryColor;
   }
 
   &__save_button:hover {
     opacity: 0.6;
+  }
+
+  &__save_icon {
+    width: 24px;
+    fill: $primaryColor;
   }
 
   &__save_button_loader {
@@ -20,6 +30,7 @@
     color: $primaryColor;
     word-break: break-word;
     white-space: pre-wrap;
+    margin-top: 20px;
   }
 
   &__user {

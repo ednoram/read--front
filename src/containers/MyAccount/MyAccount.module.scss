@@ -1,6 +1,12 @@
 .content {
   margin-top: 20px;
 
+  &__edit_icon {
+    width: 22px;
+    fill: $primaryColor;
+    margin: 0 4px -4px 0;
+  }
+
   &__user_name {
     color: $primaryColor;
     font-size: 1.75rem;
@@ -17,6 +23,7 @@
   }
 
   &__user_about_text {
+    line-height: 1.5rem;
     margin-top: 12px;
   }
 

@@ -8,6 +8,8 @@ import {
 } from "@graphql";
 import { IArticle } from "@types";
 import { Loader } from "@components";
+import BookmarkIcon from "@assets/BookmarkIcon.svg";
+import BookmarkBorderIcon from "@assets/BookmarkBorderIcon.svg";
 
 import styles from "./Article.module.scss";
 
@@ -53,7 +55,17 @@ const SaveButton: FC<Props> = ({ article }) => {
       onClick={handleSaveButtonClick}
       className={styles.top_section__save_button}
     >
-      {articleIsSaved ? "Remove From Saved" : "Save"}
+      {articleIsSaved ? (
+        <div className="flex_space_between">
+          <BookmarkIcon className={styles.top_section__save_icon} />
+          <p>Unsave</p>
+        </div>
+      ) : (
+        <div className="flex_space_between">
+          <BookmarkBorderIcon className={styles.top_section__save_icon} />
+          <p>Save</p>
+        </div>
+      )}
     </button>
   ) : (
     <Loader className={styles.top_section__save_button_loader} />

@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 import { IArticle } from "@types";
-import { useGetUser, useHideLongArticle } from "@hooks";
 import { Breadcrumbs } from "@components";
+import EditIcon from "@assets/EditIcon.svg";
+import { useGetUser, useHideLongArticle } from "@hooks";
 import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
 
 import Comments from "./Comments";
@@ -62,11 +63,14 @@ const Article: FC<Props> = ({ article }) => {
     user?.email === article.userEmail ? (
       <div>
         <Link href={`${asPath}/edit`}>
-          <a className="color_primary">Edit Article</a>
+          <a className="color_primary">
+            <EditIcon className={styles.top_section__edit_icon} />
+            Edit Article
+          </a>
         </Link>
       </div>
     ) : (
-      <div></div>
+      <div />
     );
 
   const userActions = user?.email && (
@@ -93,8 +97,8 @@ const Article: FC<Props> = ({ article }) => {
   return (
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
-      {userActions}
       <section className={styles.top_section}>
+        {userActions}
         <h1 className={styles.top_section__title}>{article.title}</h1>
         <p className={styles.top_section__user}>
           By:{" "}

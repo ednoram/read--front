@@ -2,6 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 
+import EditIcon from "@assets/EditIcon.svg";
 import { useGetUser, useLogoutFunction } from "@hooks";
 import { ARTICLES_QUERY, SAVED_ARTICLES_QUERY } from "@graphql";
 import { ArticlesList, Breadcrumbs, Loader } from "@components";
@@ -21,15 +22,18 @@ const MyAccount: FC = () => {
   const { data: myArticlesData, loading: loadingMyArticles } = useQuery(
     ARTICLES_QUERY,
     {
-      onError: () => {},
       fetchPolicy: "no-cache",
       variables: { userEmail: user?.email },
+      onError: () => alert("Something went wrong"),
     }
   );
 
   const { data: savedArticlesData, loading: loadingSavedArticles } = useQuery(
     SAVED_ARTICLES_QUERY,
-    { onError: () => {}, fetchPolicy: "no-cache" }
+    {
+      fetchPolicy: "no-cache",
+      onError: () => alert("Something went wrong"),
+    }
   );
 
   const myArticles = myArticlesData?.articles?.articles;
@@ -44,6 +48,23 @@ const MyAccount: FC = () => {
     <div className={styles.content__list_loading_div}>
       <Loader />
     </div>
+  );
+
+  const accountInfoSection = user && (
+    <section>
+      <Link href={EDIT_ACCOUNT_ROUTE}>
+        <a className="color_primary">
+          <EditIcon className={styles.content__edit_icon} />
+          Edit Account
+        </a>
+      </Link>
+      <p className={styles.content__user_name}>{user.name}</p>
+      <p className={styles.content__user_email}>{user.email}</p>
+      <div className={styles.content__user_about}>
+        <h2 className="color_primary">About</h2>
+        <p className={styles.content__user_about_text}>{user.about}</p>
+      </div>
+    </section>
   );
 
   const myArticlesSection = (
@@ -82,20 +103,6 @@ const MyAccount: FC = () => {
       <button onClick={handleLogout} className={styles.content__logout_button}>
         Log Out
       </button>
-    </section>
-  );
-
-  const accountInfoSection = user && (
-    <section>
-      <Link href={EDIT_ACCOUNT_ROUTE}>
-        <a className="color_primary">Edit Account</a>
-      </Link>
-      <p className={styles.content__user_name}>{user.name}</p>
-      <p className={styles.content__user_email}>{user.email}</p>
-      <div className={styles.content__user_about}>
-        <h2 className="color_primary">About</h2>
-        <p className={styles.content__user_about_text}>{user.about}</p>
-      </div>
     </section>
   );
 

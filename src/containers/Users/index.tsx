@@ -116,6 +116,7 @@ const Users: FC = () => {
           <p className={styles.list_section__showing_matches_p}>
             Showing matches for {`"${searchFilter}"`}
             <CloseIcon
+              aria-label="clear search filter"
               onClick={() => setSearchFilter(null)}
               className={styles.list_section__clear_filter_icon}
             />

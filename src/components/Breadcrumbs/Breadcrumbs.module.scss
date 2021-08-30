@@ -7,4 +7,10 @@
   li {
     user-select: none;
   }
+
+  &__arrow_icon {
+    height: 14px;
+    fill: black;
+    margin-bottom: -1px;
+  }
 }

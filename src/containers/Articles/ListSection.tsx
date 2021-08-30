@@ -82,6 +82,7 @@ const ListSection: FC = () => {
         <p className={styles.list__showing_matches_p}>
           Showing matches for: {`"${searchFilter}"`}
           <CloseIcon
+            aria-label="clear search filter"
             onClick={() => setSearchFilter(null)}
             className={styles.list__clear_filter_icon}
           />
