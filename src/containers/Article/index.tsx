@@ -1,17 +1,15 @@
 import { useState, useEffect, useMemo, useRef, FC } from "react";
-import Link from "next/link";
 import { render } from "react-dom";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 import { IArticle } from "@types";
 import { Breadcrumbs } from "@components";
-import EditIcon from "@assets/EditIcon.svg";
-import { useGetUser, useHideLongArticle } from "@hooks";
-import { ARTICLES_ROUTE, USERS_ROUTE } from "@constants";
+import { ARTICLES_ROUTE } from "@constants";
+import { useHideLongArticle } from "@hooks";
 
 import Comments from "./Comments";
-import SaveButton from "./SaveButton";
+import TopSection from "./TopSection";
 import styles from "./Article.module.scss";
 
 interface Props {
@@ -21,13 +19,14 @@ interface Props {
 const Article: FC<Props> = ({ article }) => {
   const [showingAll, setShowingAll] = useState(true);
 
-  const user = useGetUser();
   const { asPath } = useRouter();
   const articleElementRef = useRef<HTMLDivElement>(null);
 
   useHideLongArticle(articleElementRef, showingAll);
 
   useEffect(() => {
+    if (!article.body) return;
+
     const markdownString = article.body.replaceAll("# ", "## ");
 
     render(
@@ -51,35 +50,6 @@ const Article: FC<Props> = ({ article }) => {
     [asPath]
   );
 
-  const getDateString = (date: string) => {
-    return new Date(Number(date)).toLocaleDateString("en", {
-      month: "short",
-      year: "numeric",
-      day: "numeric",
-    });
-  };
-
-  const editLink =
-    user?.email === article.userEmail ? (
-      <div>
-        <Link href={`${asPath}/edit`}>
-          <a className="color_primary">
-            <EditIcon className={styles.top_section__edit_icon} />
-            Edit Article
-          </a>
-        </Link>
-      </div>
-    ) : (
-      <div />
-    );
-
-  const userActions = user?.email && (
-    <div className="flex_space_between">
-      {editLink}
-      <SaveButton article={article} />
-    </div>
-  );
-
   const hideGradient = !showingAll && (
     <>
       <div className={styles.article_body__hide_gradient} />
@@ -97,20 +67,7 @@ const Article: FC<Props> = ({ article }) => {
   return (
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
-      <section className={styles.top_section}>
-        {userActions}
-        <h1 className={styles.top_section__title}>{article.title}</h1>
-        <p className={styles.top_section__user}>
-          By:{" "}
-          <Link href={`${USERS_ROUTE}/${article.userEmail}`}>
-            <a>{article.userEmail}</a>
-          </Link>
-        </p>
-        <div className={styles.top_section__dates}>
-          <p>Created At: {getDateString(article.createdAt)}</p>
-          <p>Updated At: {getDateString(article.updatedAt)}</p>
-        </div>
-      </section>
+      <TopSection article={article} />
       <section>
         <article ref={articleElementRef} className={styles.article_body} />
         {hideGradient}

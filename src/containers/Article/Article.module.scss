@@ -7,12 +7,31 @@
     margin: 0 4px -4px 0;
   }
 
-  &__save_button {
-    background: none;
+  &__buttons_loader {
+    transform: scale(0.4);
+    margin: -36px 0;
   }
 
-  &__save_button:hover {
-    opacity: 0.6;
+  &__like_save_buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__like_button {
+    background: none;
+    color: black;
+  }
+
+  &__like_icon {
+    width: 24px;
+    fill: $primaryColor;
+    margin-right: 4px;
+  }
+
+  &__save_button {
+    background: none;
+    color: black;
   }
 
   &__save_icon {
@@ -20,9 +39,9 @@
     fill: $primaryColor;
   }
 
-  &__save_button_loader {
-    transform: scale(0.35);
-    margin: -30px;
+  &__save_button:hover,
+  &__like_button:hover {
+    opacity: 0.6;
   }
 
   &__title {
@@ -31,6 +50,10 @@
     word-break: break-word;
     white-space: pre-wrap;
     margin-top: 20px;
+  }
+
+  &__likes_count {
+    margin-top: 4px;
   }
 
   &__user {
@@ -170,13 +193,29 @@
   }
 
   &__edit_button {
-    color: $primaryColor;
     background: none;
     margin-top: 4px;
   }
 
-  &__list_user_email {
+  &__user_email {
     color: $primaryColor;
     margin-top: 4px;
+  }
+
+  &__edit_icon {
+    width: 22px;
+    fill: $primaryColor;
+    margin: 0 4px -4px 0;
+  }
+
+  &__loading_comments_div {
+    margin-top: 40px;
+  }
+
+  &__show_more_button {
+    background: none;
+    color: $primaryColor;
+    font-size: 1.25rem;
+    margin-top: 40px;
   }
 }

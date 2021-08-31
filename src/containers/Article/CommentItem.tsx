@@ -2,18 +2,20 @@ import { useState, FC, Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 
 import { IComment } from "@types";
+import { useGetUser } from "@hooks";
 import { USERS_ROUTE } from "@constants";
+import EditIcon from "@assets/EditIcon.svg";
 
 import styles from "./Article.module.scss";
-import { useGetUser } from "@hooks";
 import CommentForm from "./CommentForm";
 
 interface Props {
   comment: IComment;
+  setTotalCount: Dispatch<SetStateAction<number>>;
   setComments: Dispatch<SetStateAction<IComment[]>>;
 }
 
-const CommentItem: FC<Props> = ({ comment, setComments }) => {
+const CommentItem: FC<Props> = ({ comment, setComments, setTotalCount }) => {
   const [editing, setEditing] = useState(false);
 
   const user = useGetUser();
@@ -23,8 +25,15 @@ const CommentItem: FC<Props> = ({ comment, setComments }) => {
       onClick={() => setEditing(true)}
       className={styles.comments__edit_button}
     >
-      Edit Comment
+      <EditIcon className={styles.comments__edit_icon} />
+      Edit
     </button>
+  );
+
+  const userLink = (
+    <Link href={`${USERS_ROUTE}/${comment?.userEmail}`}>
+      <a className={styles.comments__user_email}>{comment?.userEmail}</a>
+    </Link>
   );
 
   return editing ? (
@@ -32,18 +41,13 @@ const CommentItem: FC<Props> = ({ comment, setComments }) => {
       comment={comment}
       setEditing={setEditing}
       setComments={setComments}
+      setTotalCount={setTotalCount}
     />
   ) : (
     <div>
       <p>{comment?.text}</p>
       {editButton}
-      <div>
-        <Link href={`${USERS_ROUTE}/${comment?.userEmail}`}>
-          <a className={styles.comments__list_user_email}>
-            {comment?.userEmail}
-          </a>
-        </Link>
-      </div>
+      <div>{userLink}</div>
     </div>
   );
 };

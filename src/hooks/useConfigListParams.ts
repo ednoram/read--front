@@ -95,7 +95,12 @@ const useConfigListParams = ({
     if (!windowSize || !articlesData?.articles?.articles) return;
 
     if (isMobile && articles) {
-      if (cachedSearchFilter === searchFilter) {
+      if (
+        cachedSearchFilter === searchFilter &&
+        !articles.find(
+          (article) => article._id === articlesData.articles.articles[0]._id
+        )
+      ) {
         setArticles([...articles, ...articlesData.articles.articles]);
       } else {
         setArticles(articlesData.articles.articles);

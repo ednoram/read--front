@@ -6,9 +6,12 @@ export const ARTICLE_QUERY = gql`
       _id
       body
       title
+      isLiked
+      isSaved
       userEmail
       createdAt
       updatedAt
+      likesCount
     }
   }
 `;
@@ -27,6 +30,7 @@ export const ARTICLES_QUERY = gql`
         body
         title
         userEmail
+        createdAt
       }
     }
   }
@@ -43,10 +47,11 @@ export const SAVED_ARTICLES_QUERY = gql`
   }
 `;
 
-export const SAVED_ARTICLES_IDS_QUERY = gql`
-  {
-    savedArticles {
-      _id
+export const ARTICLE_LIKED_SAVED_QUERY = gql`
+  query ($articleId: String!) {
+    article(_id: $articleId) {
+      isLiked
+      isSaved
     }
   }
 `;

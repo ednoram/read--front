@@ -2,24 +2,30 @@ import { useState, FC, FormEvent, SetStateAction, Dispatch } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
-import { IComment } from "@types";
-import { Loader } from "@components";
-import { getGraphqlErrorMessage } from "@utils";
 import {
   POST_COMMENT_MUTATION,
   UPDATE_COMMENT_MUTATION,
   DELETE_COMMENT_MUTATION,
 } from "@graphql";
+import { IComment } from "@types";
+import { Loader } from "@components";
+import { getGraphqlErrorMessage } from "@utils";
 
 import styles from "./Article.module.scss";
 
 interface Props {
   comment?: IComment;
   setEditing?: Dispatch<SetStateAction<boolean>>;
+  setTotalCount: Dispatch<SetStateAction<number>>;
   setComments: Dispatch<SetStateAction<IComment[]>>;
 }
 
-const CommentForm: FC<Props> = ({ setComments, comment, setEditing }) => {
+const CommentForm: FC<Props> = ({
+  comment,
+  setEditing,
+  setComments,
+  setTotalCount,
+}) => {
   const [inputValue, setInputValue] = useState(comment?.text || "");
   const { query } = useRouter();
 
@@ -38,9 +44,9 @@ const CommentForm: FC<Props> = ({ setComments, comment, setEditing }) => {
           comment ? updateComment(state, response) : [response, ...state]
         );
 
-        if (setEditing) {
-          setEditing(false);
-        }
+        if (!comment) setTotalCount((state) => state + 1);
+
+        if (setEditing) setEditing(false);
       },
     }
   );
@@ -51,6 +57,7 @@ const CommentForm: FC<Props> = ({ setComments, comment, setEditing }) => {
       onError: () => {},
       onCompleted: ({ deleteComment: response }) => {
         setComments((state) => state.filter((x) => x._id !== response._id));
+        setTotalCount((state) => state - 1);
       },
     }
   );
