@@ -102,9 +102,11 @@ const Users: FC = () => {
   return (
     <div className="container">
       <Breadcrumbs links={breadcrumbsLinks} />
+
       <section>
         <h1 className="page_title">Users</h1>
       </section>
+
       <section className={styles.list_section}>
         <div className={styles.list_section__searchbox_container}>
           <Searchbox

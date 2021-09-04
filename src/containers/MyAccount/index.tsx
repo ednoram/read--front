@@ -23,7 +23,7 @@ const MyAccount: FC = () => {
     ARTICLES_QUERY,
     {
       fetchPolicy: "no-cache",
-      variables: { userEmail: user?.email },
+      variables: { userEmail: user?.email || "" },
       onError: () => alert("Something went wrong"),
     }
   );
@@ -31,8 +31,8 @@ const MyAccount: FC = () => {
   const { data: savedArticlesData, loading: loadingSavedArticles } = useQuery(
     SAVED_ARTICLES_QUERY,
     {
+      onError: () => {},
       fetchPolicy: "no-cache",
-      onError: () => alert("Something went wrong"),
     }
   );
 

@@ -46,9 +46,11 @@ const EditAccount: FC = () => {
             Cancel
           </button>
         </section>
+
         <section>
           <Form />
         </section>
+
         <section>{links}</section>
       </div>
     </div>

@@ -9,7 +9,12 @@ const PAGE_DESCRIPTION =
 
 const Home: NextPage = () => {
   return (
-    <Layout exactTitle title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
+    <Layout
+      exactTitle
+      noTopPadding
+      title={PAGE_TITLE}
+      description={PAGE_DESCRIPTION}
+    >
       <HomeContainer />
     </Layout>
   );

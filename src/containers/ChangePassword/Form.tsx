@@ -77,6 +77,7 @@ const Form: FC = () => {
             }
           />
         </li>
+
         <li>
           <label htmlFor="new_password">
             <p className={styles.form__label_text}>New Password:</p>
@@ -89,6 +90,7 @@ const Form: FC = () => {
             onChange={(e) => changeStateProperty("newPassword", e.target.value)}
           />
         </li>
+
         <li>
           <label htmlFor="confirm_new_password">
             <p className={styles.form__label_text}>Confirm New Password:</p>
@@ -103,6 +105,7 @@ const Form: FC = () => {
             }
           />
         </li>
+
         <li className="flex_center">
           <button className={styles.form__submit_button}>
             Change Password

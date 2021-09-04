@@ -25,6 +25,7 @@ const ChangePassword: FC = () => {
           </Link>
         </div>
       </section>
+
       <section>
         <Form />
       </section>

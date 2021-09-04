@@ -7,8 +7,8 @@ interface Parameters {
   limit: number;
   offset: number;
   articles: IArticle[];
-  loadingUsers: boolean;
   limitOptions: number[];
+  loadingArticles: boolean;
   searchFilter: string | null;
   setLimit: Dispatch<SetStateAction<number>>;
   setOffset: Dispatch<SetStateAction<number>>;
@@ -27,9 +27,9 @@ const useConfigListParams = ({
   setArticles,
   limitOptions,
   searchFilter,
-  loadingUsers,
   articlesData,
   setShowLoading,
+  loadingArticles,
   setShowLimitControls,
 }: Parameters): void => {
   const [cachedSearchFilter, setCachedSearchFilter] = useState<string | null>(
@@ -48,9 +48,9 @@ const useConfigListParams = ({
 
   useEffect(() => {
     if (!isMobile) {
-      setShowLoading(loadingUsers);
+      setShowLoading(loadingArticles);
     }
-  }, [loadingUsers]);
+  }, [loadingArticles]);
 
   useEffect(() => {
     setOffset(0);
@@ -72,7 +72,7 @@ const useConfigListParams = ({
 
   useEffect(() => {
     if (windowSize.width) {
-      setShowLoading(loadingUsers && (!isMobile || articles?.length === 0));
+      setShowLoading(loadingArticles && (!isMobile || articles?.length === 0));
     }
   }, [windowSize.width, articles]);
 

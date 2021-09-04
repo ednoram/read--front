@@ -41,6 +41,12 @@ const LikeButton: FC<Props> = ({
     click({ variables: { articleId: article._id } });
   };
 
+  const icon = isLiked ? (
+    <ThumbUpIcon className={styles.top_section__like_icon} />
+  ) : (
+    <ThumbUpOutlinedIcon className={styles.top_section__like_icon} />
+  );
+
   return (
     <button
       disabled={loading}
@@ -48,11 +54,7 @@ const LikeButton: FC<Props> = ({
       className={styles.top_section__like_button}
     >
       <div className="flex_space_between">
-        {isLiked ? (
-          <ThumbUpIcon className={styles.top_section__like_icon} />
-        ) : (
-          <ThumbUpOutlinedIcon className={styles.top_section__like_icon} />
-        )}
+        {icon}
         {isLiked ? "Unlike" : "Like"}
       </div>
     </button>

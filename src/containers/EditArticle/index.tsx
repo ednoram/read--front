@@ -13,6 +13,7 @@ const EditArticle: FC<Props> = ({ article }) => {
       <section>
         <h1 className="page_title">Edit Article</h1>
       </section>
+
       <section>
         <ArticleForm article={article} />
       </section>

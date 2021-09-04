@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
-import { LOGIN_ROUTE } from "@constants";
+import { LOGIN_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 import { getGraphqlErrorMessage } from "@utils";
 import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
 
@@ -32,7 +32,7 @@ const AuthForm: FC<Props> = ({ type }) => {
         if (!typeIsRegister) {
           localStorage.setItem("isAuthenticated", "true");
         }
-        router.push(typeIsRegister ? LOGIN_ROUTE : "/");
+        router.push(typeIsRegister ? LOGIN_ROUTE : MY_ACCOUNT_ROUTE);
       },
     }
   );

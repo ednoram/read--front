@@ -10,25 +10,29 @@ interface Props {
 }
 
 const LimitButtonsDiv: FC<Props> = ({ limitOptions, limit, setLimit }) => {
+  const list = (
+    <ul>
+      {limitOptions.map((option) => (
+        <li key={nanoid()}>
+          <button
+            onClick={() => setLimit(option)}
+            className={
+              option === limit
+                ? styles.list__limit_button_active
+                : styles.list__limit_button
+            }
+          >
+            {option}
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <div className={styles.list__limit_buttons}>
       <p>Items per page:</p>
-      <ul>
-        {limitOptions.map((option) => (
-          <li key={nanoid()}>
-            <button
-              onClick={() => setLimit(option)}
-              className={
-                option === limit
-                  ? styles.list__limit_button_active
-                  : styles.list__limit_button
-              }
-            >
-              {option}
-            </button>
-          </li>
-        ))}
-      </ul>
+      {list}
     </div>
   );
 };

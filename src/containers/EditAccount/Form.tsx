@@ -73,6 +73,7 @@ const Form: FC = () => {
             onChange={(e) => setState({ ...state, name: e.target.value })}
           />
         </li>
+
         <li>
           <label htmlFor="about">
             <p className={styles.content__label_text}>About:</p>
@@ -86,6 +87,7 @@ const Form: FC = () => {
             onChange={(e) => setState({ ...state, about: e.target.value })}
           />
         </li>
+
         <li className="flex_center">
           <button className={styles.content__submit_button}>
             Submit Changes

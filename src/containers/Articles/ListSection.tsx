@@ -20,7 +20,7 @@ const ListSection: FC = () => {
   const [showLimitControls, setShowLimitControls] = useState(true);
   const [searchFilter, setSearchFilter] = useState<string | null>(null);
 
-  const { data: articlesData, loading: loadingUsers } = useQuery(
+  const { data: articlesData, loading: loadingArticles } = useQuery(
     ARTICLES_QUERY,
     { variables: { limit, offset, searchFilter } }
   );
@@ -35,7 +35,7 @@ const ListSection: FC = () => {
     limitOptions,
     searchFilter,
     articlesData,
-    loadingUsers,
+    loadingArticles,
     setShowLoading,
     setShowLimitControls,
   });
@@ -89,7 +89,7 @@ const ListSection: FC = () => {
         </p>
       )}
       {articles && !showLoading && <ArticlesList articles={articles} />}
-      {loadingUsers && smallLoadingDiv}
+      {loadingArticles && smallLoadingDiv}
       {totalArticlesCount > limit && (
         <Pagination
           limit={limit}

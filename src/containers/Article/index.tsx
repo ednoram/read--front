@@ -68,10 +68,12 @@ const Article: FC<Props> = ({ article }) => {
     <div className="container_small">
       <Breadcrumbs links={breadcrumbsLinks} />
       <TopSection article={article} />
+
       <section>
         <article ref={articleElementRef} className={styles.article_body} />
         {hideGradient}
       </section>
+
       <section>
         <Comments />
       </section>

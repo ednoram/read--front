@@ -10,6 +10,7 @@ interface Props {
   description: string;
   children?: ReactNode;
   exactTitle?: boolean;
+  noTopPadding?: boolean;
   noHeaderAndFooter?: boolean;
 }
 
@@ -18,8 +19,13 @@ const Layout: FC<Props> = ({
   children,
   exactTitle,
   description,
+  noTopPadding,
   noHeaderAndFooter,
 }) => {
+  const mainClassName = `${styles.main} ${
+    noTopPadding ? styles.no_top_padding : ""
+  }`;
+
   return (
     <>
       <Head>
@@ -31,7 +37,7 @@ const Layout: FC<Props> = ({
       ) : (
         <>
           <Header />
-          <main className={styles.main}>{children}</main>
+          <main className={mainClassName}>{children}</main>
           <Footer />
         </>
       )}

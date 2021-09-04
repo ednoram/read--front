@@ -1,0 +1,51 @@
+.top_section {
+  background-image: url(/home_background.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 160px 0;
+
+  &__title {
+    font-size: 2.5rem;
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+  }
+
+  &__join_button {
+    color: $primaryColor;
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-weight: bold;
+    padding: 10px 36px;
+    margin-top: 28px;
+  }
+}
+
+.articles_section {
+  margin-top: 90px;
+
+  &__heading {
+    text-align: center;
+    color: $primaryColor;
+    font-size: 1.75rem;
+  }
+
+  &__loading_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+  }
+
+  &__see_more_link {
+    color: $primaryColor;
+    font-size: 1.125rem;
+    margin-top: 28px;
+  }
+
+  &__see_more_link:hover {
+    opacity: 0.6;
+  }
+}

@@ -7,6 +7,7 @@ const Footer: FC = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className="flex_center">
+          <p className={styles.footer__read_text}>Read</p>
           <p className={styles.footer__text}>By @ednoram</p>
         </div>
       </div>

@@ -9,6 +9,7 @@ import {
 } from "@graphql";
 import { IComment } from "@types";
 import { Loader } from "@components";
+import { useIsAuthenticated } from "@hooks";
 import { getGraphqlErrorMessage } from "@utils";
 
 import styles from "./Article.module.scss";
@@ -29,14 +30,16 @@ const CommentForm: FC<Props> = ({
   const [inputValue, setInputValue] = useState(comment?.text || "");
   const { query } = useRouter();
 
-  const updateComment = (state: IComment[], response: { _id: string }) => {
-    return state.map((x) => (x._id === response._id ? response : x));
-  };
+  const isAuthenticated = useIsAuthenticated();
 
   const [submit, { error, loading: loadingSubmit }] = useMutation(
     comment ? UPDATE_COMMENT_MUTATION : POST_COMMENT_MUTATION,
     {
-      onError: () => {},
+      onError: () => {
+        if (!isAuthenticated) {
+          alert("Log in to post comments");
+        }
+      },
       onCompleted: (data) => {
         const response = comment ? data.updateComment : data.postComment;
 
@@ -61,6 +64,10 @@ const CommentForm: FC<Props> = ({
       },
     }
   );
+
+  const updateComment = (state: IComment[], response: { _id: string }) => {
+    return state.map((x) => (x._id === response._id ? response : x));
+  };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
