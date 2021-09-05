@@ -27,6 +27,19 @@
     margin-top: 12px;
   }
 
+  &__add_about_link {
+    display: flex;
+    align-items: center;
+    color: $primaryColor;
+    margin-top: 16px;
+  }
+
+  &__add_about_link_icon {
+    width: 20px;
+    fill: $primaryColor;
+    margin-right: 4px;
+  }
+
   &__articles {
     margin-top: 40px;
   }

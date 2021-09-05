@@ -11,12 +11,10 @@ const MyAccount: NextPage = () => {
   const user = useGetUser();
   useProtectRoute(true);
 
-  return user ? (
+  return (
     <Layout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
-      <MyAccountContainer />
+      {user && <MyAccountContainer />}
     </Layout>
-  ) : (
-    <></>
   );
 };
 

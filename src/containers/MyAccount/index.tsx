@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useQuery } from "@apollo/client";
 
 import EditIcon from "@assets/EditIcon.svg";
+import AddCircleIcon from "@assets/AddCircleIcon.svg";
 import { useGetUser, useLogoutFunction } from "@hooks";
 import { ARTICLES_QUERY, SAVED_ARTICLES_QUERY } from "@graphql";
 import { ArticlesList, Breadcrumbs, Loader } from "@components";
@@ -62,7 +63,16 @@ const MyAccount: FC = () => {
       <p className={styles.content__user_email}>{user.email}</p>
       <div className={styles.content__user_about}>
         <h2 className="color_primary">About</h2>
-        <p className={styles.content__user_about_text}>{user.about}</p>
+        {user.about ? (
+          <p className={styles.content__user_about_text}>{user.about}</p>
+        ) : (
+          <Link href={EDIT_ACCOUNT_ROUTE}>
+            <a className={styles.content__add_about_link}>
+              <AddCircleIcon className={styles.content__add_about_link_icon} />
+              Add About
+            </a>
+          </Link>
+        )}
       </div>
     </section>
   );

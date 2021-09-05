@@ -1,43 +1,81 @@
-import { useState, FC, FormEvent } from "react";
+import {
+  useState,
+  FC,
+  FormEvent,
+  SetStateAction,
+  Dispatch,
+  useEffect,
+} from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
+import {
+  LOG_IN_MUTATION,
+  REGISTER_MUTATION,
+  VERIFY_ACCOUNT_MUTATION,
+} from "@graphql";
 import { Loader } from "@components";
-import { LOGIN_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 import { getGraphqlErrorMessage } from "@utils";
-import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
+import { LOGIN_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 
 import styles from "./AuthForm.module.scss";
 
 interface Props {
-  type: "login" | "register";
+  email?: string;
+  setStep?: Dispatch<SetStateAction<1 | 2>>;
+  setEmail?: Dispatch<SetStateAction<string>>;
+  type: "login" | "register" | "verification";
 }
 
 const INITIAL_STATE = {
   name: "",
+  code: "",
   email: "",
   password: "",
   passwordConfirmation: "",
 };
 
-const AuthForm: FC<Props> = ({ type }) => {
-  const typeIsRegister = type === "register";
-
+const AuthForm: FC<Props> = ({ type, setStep, email, setEmail }) => {
   const [state, setState] = useState(INITIAL_STATE);
+
+  const typeIsLogin = type === "login";
+  const typeIsRegister = type === "register";
+  const typeIsVerification = type === "verification";
+
   const [submit, { loading, error }] = useMutation(
     typeIsRegister ? REGISTER_MUTATION : LOG_IN_MUTATION,
     {
       onError: () => {},
       onCompleted: () => {
-        if (!typeIsRegister) {
+        if (typeIsLogin) {
           localStorage.setItem("isAuthenticated", "true");
+          router.push(MY_ACCOUNT_ROUTE);
+        } else if (typeIsRegister && setStep) {
+          setStep(2);
         }
-        router.push(typeIsRegister ? LOGIN_ROUTE : MY_ACCOUNT_ROUTE);
       },
     }
   );
 
+  const [
+    submitVerification,
+    { loading: loadingVerification, error: verificationError },
+  ] = useMutation(VERIFY_ACCOUNT_MUTATION, {
+    onError: () => {},
+    onCompleted: () => {
+      if (typeIsVerification) {
+        router.push(LOGIN_ROUTE);
+      }
+    },
+  });
+
   const router = useRouter();
+
+  useEffect(() => {
+    if (setEmail) {
+      setEmail(state.email);
+    }
+  }, [state.email]);
 
   const setStateProperty = (key: string, value: string) => {
     setState({ ...state, [key]: value });
@@ -48,7 +86,14 @@ const AuthForm: FC<Props> = ({ type }) => {
     submit({ variables: state });
   };
 
-  const errorMessage = getGraphqlErrorMessage(error);
+  const handleVerificationSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitVerification({
+      variables: { userEmail: email, code: state.code },
+    });
+  };
+
+  const errorMessage = getGraphqlErrorMessage(error || verificationError);
 
   const errorDiv = errorMessage && (
     <div className="error_div">
@@ -56,13 +101,40 @@ const AuthForm: FC<Props> = ({ type }) => {
     </div>
   );
 
-  const loadingDiv = loading && (
+  const loadingDiv = (loading || loadingVerification) && (
     <div className="loading_div">
       <Loader />
     </div>
   );
 
-  return (
+  const verificationForm = (
+    <form onSubmit={handleVerificationSubmit} className={styles.form}>
+      {errorDiv}
+      {loadingDiv}
+      <div className={styles.form__inputs}>
+        <p className={styles.form__verification_message}>
+          Please check your inbox and enter the four digit verification code to
+          verify your account.
+        </p>
+        <input
+          value={state.code}
+          placeholder="Verification Code"
+          className={styles.form__text_input}
+          onChange={(e) => setStateProperty("code", e.target.value)}
+        />
+        <button
+          disabled={loadingVerification}
+          className={styles.form__submit_button}
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  );
+
+  return typeIsVerification ? (
+    verificationForm
+  ) : (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.form__inputs}>
         {errorDiv}
@@ -99,7 +171,8 @@ const AuthForm: FC<Props> = ({ type }) => {
           />
         )}
         <button disabled={loading} className={styles.form__submit_button}>
-          {typeIsRegister ? "Register" : "Log In"}
+          {typeIsLogin && "Log In"}
+          {typeIsRegister && "Register"}
         </button>
       </div>
     </form>

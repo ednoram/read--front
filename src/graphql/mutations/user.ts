@@ -22,7 +22,7 @@ export const REGISTER_MUTATION = gql`
       password: $password
       passwordConfirmation: $passwordConfirmation
     ) {
-      _id
+      success
     }
   }
 `;
@@ -40,6 +40,14 @@ export const UPDATE_USER_MUTATION = gql`
     updateUser(name: $name, about: $about) {
       name
       about
+    }
+  }
+`;
+
+export const VERIFY_ACCOUNT_MUTATION = gql`
+  mutation ($userEmail: String!, $code: String!) {
+    verifyAccount(userEmail: $userEmail, code: $code) {
+      success
     }
   }
 `;
