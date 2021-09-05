@@ -24,7 +24,7 @@ const MyAccount: FC = () => {
     {
       fetchPolicy: "no-cache",
       variables: { userEmail: user?.email || "" },
-      onError: () => alert("Something went wrong"),
+      onError: () => alert("Something went wrong."),
     }
   );
 

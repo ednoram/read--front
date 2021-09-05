@@ -5,8 +5,8 @@ import { useIsAuthenticated } from "@hooks";
 import { disableRouteChangeEvent } from "@utils";
 
 const useProtectRoute = (whenAuthenticated: boolean, enabled = true): void => {
-  const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
+  const isAuthenticated = useIsAuthenticated();
 
   useEffect(() => {
     if (

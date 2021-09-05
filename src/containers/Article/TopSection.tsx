@@ -33,7 +33,7 @@ const TopSection: FC<Props> = ({ article }) => {
       setIsLiked(data.article.isLiked);
     },
     onError: () => {
-      alert("Something went wrong");
+      alert("Something went wrong.");
     },
   });
 

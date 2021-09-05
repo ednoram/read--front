@@ -25,7 +25,7 @@ const LikeButton: FC<Props> = ({
     isLiked ? UNLIKE_ARTICLE_MUTATION : LIKE_ARTICLE_MUTATION,
     {
       onError: () => {
-        alert("Something went wrong");
+        alert("Something went wrong.");
         setIsLiked(!isLiked);
       },
       onCompleted: () => {

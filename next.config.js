@@ -10,7 +10,7 @@ module.exports = {
   },
   sassOptions: {
     prependData:
-      ["variables", "breakpoints"]
+      ["variables", "breakpoints", "animations"]
         .map((fileName) => `@import "@styles/${fileName}.scss";`)
         .join("\n") + "\n\n",
   },

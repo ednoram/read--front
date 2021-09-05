@@ -7,7 +7,7 @@ const useLogoutFunction = (): (() => void) => {
   const [logout] = useMutation(LOGOUT_MUTATION, {
     onError: () => {
       localStorage.removeItem("isAuthenticated");
-      alert("Something went wrong");
+      alert("Something went wrong.");
     },
     onCompleted: () => {
       localStorage.removeItem("isAuthenticated");

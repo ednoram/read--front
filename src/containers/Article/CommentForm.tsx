@@ -37,7 +37,7 @@ const CommentForm: FC<Props> = ({
     {
       onError: () => {
         if (!isAuthenticated) {
-          alert("Log in to post comments");
+          alert("Log in to post comments.");
         }
       },
       onCompleted: (data) => {

@@ -19,7 +19,7 @@ const SaveButton: FC<Props> = ({ article, isSaved, setIsSaved }) => {
     isSaved ? REMOVE_SAVED_ARTICLE_MUTATION : SAVE_ARTICLE_MUTATION,
     {
       onError: () => {
-        alert("Something went wrong");
+        alert("Something went wrong.");
         setIsSaved(!isSaved);
       },
     }

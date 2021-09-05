@@ -1,17 +1,17 @@
 import { NextPage } from "next";
 
 import { Layout } from "@components";
-import { useIsAuthenticated, useProtectRoute } from "@hooks";
+import { useGetUser, useProtectRoute } from "@hooks";
 import { MyAccountContainer } from "@containers";
 
 const PAGE_TITLE = "My Account";
 const PAGE_DESCRIPTION = "My account page";
 
 const MyAccount: NextPage = () => {
-  const isAuthenticated = useIsAuthenticated();
+  const user = useGetUser();
   useProtectRoute(true);
 
-  return isAuthenticated ? (
+  return user ? (
     <Layout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
       <MyAccountContainer />
     </Layout>

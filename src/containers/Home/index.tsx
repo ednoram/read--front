@@ -23,19 +23,23 @@ const Home: FC = () => {
     </div>
   );
 
+  const joinButton = !isAuthenticated && (
+    <div>
+      <Link href={REGISTER_ROUTE}>
+        <button className={styles.top_section__join_button}>Join</button>
+      </Link>
+    </div>
+  );
+
   const topSection = (
     <section className={styles.top_section}>
       <div className="container">
         <div className="flex_center">
           <h1 className={styles.top_section__title}>Read</h1>
           <h2 className={styles.top_section__subtitle}>
-            Broaden your knowledge.
+            A place to learn and share your knowledge.
           </h2>
-          {!isAuthenticated && (
-            <Link href={REGISTER_ROUTE}>
-              <button className={styles.top_section__join_button}>Join</button>
-            </Link>
-          )}
+          {joinButton}
         </div>
       </div>
     </section>
