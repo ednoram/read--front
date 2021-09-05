@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { AuthForm } from "@components";
-import { REGISTER_ROUTE } from "@constants";
+import { REGISTER_ROUTE, RESET_PASSWORD_ROUTE } from "@constants";
 
 import styles from "./Login.module.scss";
 
@@ -22,11 +22,18 @@ const Login: FC = () => {
           </button>
         </a>
       </Link>
-      <Link href={"/"}>
-        <a className={styles.content__continue_link}>
-          Continue without logging in
-        </a>
-      </Link>
+      <div>
+        <Link href={RESET_PASSWORD_ROUTE}>
+          <a className={styles.content__right_link}>Forgot password</a>
+        </Link>
+      </div>
+      <div>
+        <Link href="/">
+          <a className={styles.content__right_link}>
+            Continue without logging in
+          </a>
+        </Link>
+      </div>
     </div>
   );
 

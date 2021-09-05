@@ -62,6 +62,13 @@ a {
   }
 }
 
+.loading_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 41px;
+}
+
 .error_div {
   width: 100%;
   background-color: rgba($red, 0.05);
@@ -70,11 +77,12 @@ a {
   padding: 10px 12px;
 }
 
-.loading_div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 41px;
+.success_div {
+  width: 100%;
+  background-color: rgba($green, 0.05);
+  color: $green;
+  border: 1px solid $green;
+  padding: 10px 12px;
 }
 
 .flex_center {
@@ -96,6 +104,14 @@ a {
   justify-content: flex-end;
 }
 
+.text_align_center {
+  text-align: center;
+}
+
 .color_primary {
   color: $primaryColor;
+}
+
+.color_green {
+  color: $green;
 }

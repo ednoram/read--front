@@ -9,4 +9,6 @@ export { default as MyAccountContainer } from "./MyAccount";
 export { default as EditAccountContainer } from "./EditAccount";
 export { default as PostArticleContainer } from "./PostArticle";
 export { default as EditArticleContainer } from "./EditArticle";
+export { default as ResetPasswordContainer } from "./ResetPassword";
 export { default as ChangePasswordContainer } from "./ChangePassword";
+export { default as ResetPasswordEmailContainer } from "./ResetPasswordEmail";
