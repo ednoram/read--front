@@ -5,6 +5,7 @@ export { default as LoginContainer } from "./Login";
 export { default as ArticleContainer } from "./Article";
 export { default as ArticlesContainer } from "./Articles";
 export { default as RegisterContainer } from "./Register";
+export { default as Custom404Container } from "./Custom404";
 export { default as MyAccountContainer } from "./MyAccount";
 export { default as EditAccountContainer } from "./EditAccount";
 export { default as PostArticleContainer } from "./PostArticle";

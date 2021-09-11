@@ -110,9 +110,14 @@ const MyAccount: FC = () => {
 
   const logoutSection = (
     <section>
-      <button onClick={handleLogout} className={styles.content__logout_button}>
-        Log Out
-      </button>
+      <div className="flex_right">
+        <button
+          onClick={handleLogout}
+          className={styles.content__logout_button}
+        >
+          Log Out
+        </button>
+      </div>
     </section>
   );
 

@@ -4,7 +4,7 @@ A place where you can learn and share your knowledge.
 
 ## Features
 
-- Articles list with pagination and filters.
+- Articles list with pagination and search filter.
 - Login, register.
 - Post, edit, delete articles.
 - Like articles.

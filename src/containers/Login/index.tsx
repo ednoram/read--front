@@ -51,7 +51,7 @@ const Login: FC = () => {
       <div className="container flex_center">
         <p className={styles.content__logo}>Read</p>
         <p className={styles.content__description}>
-          A place to learn and share your knowledge.
+          A place where you can learn and share your knowledge.
         </p>
         <div className={styles.responsive_hide}>{links}</div>
       </div>

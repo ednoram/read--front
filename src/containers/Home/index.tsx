@@ -37,7 +37,7 @@ const Home: FC = () => {
         <div className="flex_center">
           <h1 className={styles.top_section__title}>Read</h1>
           <h2 className={styles.top_section__subtitle}>
-            A place to learn and share your knowledge.
+            A place where you can learn and share your knowledge.
           </h2>
           {joinButton}
         </div>
