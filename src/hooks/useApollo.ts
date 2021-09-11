@@ -1,12 +1,14 @@
 import { useMemo } from "react";
+import { useRouter } from "next/router";
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 
-import { initializeApollo } from "@utils";
+import { createApolloClient } from "@utils";
 
-const useApollo = (
-  initialState: unknown
-): ApolloClient<NormalizedCacheObject> => {
-  const store = useMemo(() => initializeApollo(initialState), [initialState]);
+const useApollo = (): ApolloClient<NormalizedCacheObject> => {
+  const { pathname } = useRouter();
+
+  const store = useMemo(() => createApolloClient(), [pathname]);
+
   return store;
 };
 

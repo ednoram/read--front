@@ -26,6 +26,7 @@ const Users: FC = () => {
   const { data: usersData, loading: loadingUsers } = useQuery(USERS_QUERY, {
     fetchPolicy: "no-cache",
     variables: { searchFilter, offset, limit },
+    onError: () => alert("Something went wrong."),
   });
 
   useEffect(() => {

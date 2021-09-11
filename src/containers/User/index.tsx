@@ -18,9 +18,9 @@ const User: FC<Props> = ({ user }) => {
   const { data: userArticles, loading: loadingArticles } = useQuery(
     ARTICLES_QUERY,
     {
-      onError: () => {},
       fetchPolicy: "no-cache",
       variables: { userEmail: user.email },
+      onError: () => alert("Something went wrong."),
     }
   );
 

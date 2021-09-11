@@ -14,7 +14,10 @@ const Home: FC = () => {
 
   const { data: articlesData, loading: loadingArticles } = useQuery(
     ARTICLES_QUERY,
-    { variables: { limit: 3 } }
+    {
+      variables: { limit: 3 },
+      onError: () => alert("Something went wrong."),
+    }
   );
 
   const loadingDiv = (

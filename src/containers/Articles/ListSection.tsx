@@ -22,7 +22,10 @@ const ListSection: FC = () => {
 
   const { data: articlesData, loading: loadingArticles } = useQuery(
     ARTICLES_QUERY,
-    { variables: { limit, offset, searchFilter } }
+    {
+      onError: () => alert("Something went wrong."),
+      variables: { limit, offset, searchFilter },
+    }
   );
 
   useConfigListParams({

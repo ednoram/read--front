@@ -3,8 +3,8 @@ import { NextPage, GetServerSideProps } from "next";
 import { IUser } from "@types";
 import { Layout } from "@components";
 import { USER_QUERY } from "@graphql";
-import { initializeApollo } from "@utils";
 import { UserContainer } from "@containers";
+import { createApolloClient } from "@utils";
 
 const PAGE_TITLE = "User";
 const PAGE_DESCRIPTION = "User page";
@@ -24,7 +24,7 @@ const User: NextPage<Props> = ({ user }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const userEmail = params?.email;
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const { data } = await apolloClient.query({
       query: USER_QUERY,

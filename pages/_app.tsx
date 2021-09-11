@@ -4,12 +4,11 @@ import { ApolloProvider } from "@apollo/client";
 
 import "@styles/index.scss";
 import { addProgressBar } from "@utils";
-import { useApollo, useLoginWithToken, useRefreshApolloStore } from "@hooks";
+import { useApollo, useLoginWithToken } from "@hooks";
 
 const App = ({ Component, pageProps }: AppProps): ReactNode => {
-  const apolloClient = useApollo(pageProps.initialApolloState);
+  const apolloClient = useApollo();
 
-  useRefreshApolloStore(apolloClient);
   addProgressBar();
 
   return (

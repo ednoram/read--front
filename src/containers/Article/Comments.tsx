@@ -32,6 +32,9 @@ const Comments: FC = () => {
           setTotalCount(commentsData.comments.totalCount);
         }
       },
+      onError: () => {
+        alert("Something went wrong.");
+      },
     }
   );
 

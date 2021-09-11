@@ -3,7 +3,7 @@ import { NextPage, GetServerSideProps } from "next";
 import { IArticle } from "@types";
 import { Layout } from "@components";
 import { ARTICLE_QUERY } from "@graphql";
-import { initializeApollo } from "@utils";
+import { createApolloClient } from "@utils";
 import { ArticleContainer } from "@containers";
 
 interface Props {
@@ -24,7 +24,7 @@ const Article: NextPage<Props> = ({ article }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const articleId = params?.id;
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const { data } = await apolloClient.query({
       query: ARTICLE_QUERY,

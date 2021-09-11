@@ -3,7 +3,7 @@ import { NextPage, GetServerSideProps } from "next";
 import { IArticle } from "@types";
 import { Layout } from "@components";
 import { ARTICLE_QUERY } from "@graphql";
-import { initializeApollo } from "@utils";
+import { createApolloClient } from "@utils";
 import { EditArticleContainer } from "@containers";
 import { useGetUser, useProtectRoute, useConfirmBeforeLeaving } from "@hooks";
 
@@ -30,7 +30,7 @@ const EditArticle: NextPage<Props> = ({ article }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const { data } = await apolloClient.query({
       query: ARTICLE_QUERY,
