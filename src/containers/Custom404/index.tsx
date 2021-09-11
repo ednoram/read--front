@@ -14,7 +14,9 @@ const Custom404: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.container__content}>
-        <Image src="/logo-512.png" height={120} width={120} />
+        <div className="flex_center">
+          <Image src="/logo-512.png" height={120} width={120} />
+        </div>
         <div className={styles.container__text_div}>
           <h1 className="page_title">404 Page not found</h1>
           <p className={styles.container__description}>
