@@ -2,7 +2,6 @@ import { NextPage, GetServerSideProps } from "next";
 import { useQuery } from "@apollo/client";
 
 import { ARTICLE_QUERY } from "@graphql";
-import { createApolloClient } from "@utils";
 import { Layout, Loader } from "@components";
 import { EditArticleContainer, Custom404Container } from "@containers";
 import { useGetUser, useProtectRoute, useConfirmBeforeLeaving } from "@hooks";

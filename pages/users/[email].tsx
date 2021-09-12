@@ -5,9 +5,6 @@ import { USER_QUERY } from "@graphql";
 import { Layout, Loader } from "@components";
 import { UserContainer, Custom404Container } from "@containers";
 
-const PAGE_TITLE = "User";
-const PAGE_DESCRIPTION = "User page";
-
 interface Props {
   email: string;
 }
@@ -19,6 +16,9 @@ const User: NextPage<Props> = ({ email }) => {
   });
 
   const user = userData?.user;
+
+  const PAGE_TITLE = `User: ${user ? user?.name : ""}`;
+  const PAGE_DESCRIPTION = "User page";
 
   const loadingDiv = (
     <div className="loading_page_div">
