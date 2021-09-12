@@ -121,6 +121,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
         <input
           name="title"
           maxLength={60}
+          autoComplete="off"
           value={state.title}
           placeholder="Title"
           onKeyDown={disableEnterSubmit}
@@ -135,6 +136,7 @@ const ArticleForm: FC<Props> = ({ article }) => {
         <textarea
           name="body"
           placeholder="Body"
+          autoComplete="off"
           value={state.body}
           className={styles.form__body_textarea}
           onChange={(e) => setState({ ...state, body: e.target.value })}

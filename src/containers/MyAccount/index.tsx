@@ -2,12 +2,13 @@ import { FC } from "react";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 
+import { useGetUser } from "@hooks";
+import { removeTokenCookie } from "@utils";
 import EditIcon from "@assets/EditIcon.svg";
 import AddCircleIcon from "@assets/AddCircleIcon.svg";
-import { useGetUser, useLogoutFunction } from "@hooks";
 import { ARTICLES_QUERY, SAVED_ARTICLES_QUERY } from "@graphql";
 import { ArticlesList, Breadcrumbs, Loader } from "@components";
-import { EDIT_ACCOUNT_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
+import { EDIT_ACCOUNT_ROUTE, LOGIN_ROUTE, MY_ACCOUNT_ROUTE } from "@constants";
 
 import styles from "./MyAccount.module.scss";
 
@@ -18,7 +19,6 @@ const breadcrumbsLinks = [
 
 const MyAccount: FC = () => {
   const user = useGetUser();
-  const logout = useLogoutFunction();
 
   const { data: myArticlesData, loading: loadingMyArticles } = useQuery(
     ARTICLES_QUERY,
@@ -41,7 +41,9 @@ const MyAccount: FC = () => {
 
   const handleLogout = () => {
     if (confirm("Are you sure you want to log out?")) {
-      logout();
+      removeTokenCookie();
+      localStorage.removeItem("isAuthenticated");
+      location.href = LOGIN_ROUTE;
     }
   };
 

@@ -1,40 +1,49 @@
 import { NextPage, GetServerSideProps } from "next";
+import { useQuery } from "@apollo/client";
 
-import { IUser } from "@types";
-import { Layout } from "@components";
 import { USER_QUERY } from "@graphql";
-import { UserContainer } from "@containers";
-import { createApolloClient } from "@utils";
+import { Layout, Loader } from "@components";
+import { UserContainer, Custom404Container } from "@containers";
 
 const PAGE_TITLE = "User";
 const PAGE_DESCRIPTION = "User page";
 
 interface Props {
-  user: IUser;
+  email: string;
 }
 
-const User: NextPage<Props> = ({ user }) => {
-  return (
+const User: NextPage<Props> = ({ email }) => {
+  const { data: userData, loading } = useQuery(USER_QUERY, {
+    onError: () => {},
+    variables: { email },
+  });
+
+  const user = userData?.user;
+
+  const loadingDiv = (
+    <div className="loading_page_div">
+      <Loader />
+    </div>
+  );
+
+  return !loading && !user ? (
+    <Layout noHeaderAndFooter title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
+      <Custom404Container />
+    </Layout>
+  ) : (
     <Layout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
-      <UserContainer user={user} />
+      {loading && loadingDiv}
+      {!loading && user && <UserContainer user={user} />}
     </Layout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
-    const userEmail = params?.email;
-    const apolloClient = createApolloClient();
-
-    const { data } = await apolloClient.query({
-      query: USER_QUERY,
-      variables: { email: userEmail },
-    });
-
-    const { user } = data;
+    const email = params?.email;
 
     return {
-      props: { user },
+      props: { email },
     };
   } catch {
     return { notFound: true };

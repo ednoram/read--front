@@ -17,7 +17,7 @@ export const ARTICLE_QUERY = gql`
 `;
 
 export const ARTICLES_QUERY = gql`
-  query ($userEmail: String, $searchFilter: String, $limit: Int, $offset: Int) {
+  query ($limit: Int, $offset: Int, $userEmail: String, $searchFilter: String) {
     articles(
       limit: $limit
       offset: $offset

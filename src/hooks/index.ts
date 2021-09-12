@@ -4,7 +4,6 @@ export { default as useWindowSize } from "./useWindowSize";
 export { default as useProtectRoute } from "./useProtectRoute";
 export { default as useControlScroll } from "./useControlScroll";
 export { default as useLoginWithToken } from "./useLoginWithToken";
-export { default as useLogoutFunction } from "./useLogoutFunction";
 export { default as useHideLongArticle } from "./useHideLongArticle";
 export { default as useIsAuthenticated } from "./useIsAuthenticated";
 export { default as useConfigListParams } from "./useConfigListParams";

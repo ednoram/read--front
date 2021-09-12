@@ -11,7 +11,7 @@ import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
 import { MY_ACCOUNT_ROUTE } from "@constants";
-import { getGraphqlErrorMessage } from "@utils";
+import { getGraphqlErrorMessage, setTokenCookie } from "@utils";
 import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
 
 import styles from "./AuthForm.module.scss";
@@ -43,9 +43,10 @@ const AuthForm: FC<Props> = ({ type, setStep, email, setEmail }) => {
     typeIsRegister ? REGISTER_MUTATION : LOG_IN_MUTATION,
     {
       onError: () => {},
-      onCompleted: () => {
+      onCompleted: (data) => {
         if (typeIsLogin) {
-          localStorage.setItem("isAuthenticated", "true");
+          localStorage.setItem("isAuthenticated", "yes");
+          setTokenCookie(data.login.token);
           router.push(MY_ACCOUNT_ROUTE);
         } else if (typeIsRegister && setStep) {
           setStep(2);

@@ -10,6 +10,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.5",
     "@svgr/webpack": "^5.5.0",
+    "js-cookie": "^3.0.1",
     "nanoid": "^3.1.23",
     "next": "^11.0.1",
     "node-sass": "^5.0.0",
@@ -20,6 +21,7 @@
     "react-multi-carousel": "^2.6.3"
   },
   "devDependencies": {
+    "@types/js-cookie": "^2.2.7",
     "@types/node": "^15.3.0",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.6",

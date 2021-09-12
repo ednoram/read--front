@@ -1,22 +1,39 @@
 import { NextPage, GetServerSideProps } from "next";
+import { useQuery } from "@apollo/client";
 
-import { IArticle } from "@types";
-import { Layout } from "@components";
 import { ARTICLE_QUERY } from "@graphql";
-import { createApolloClient } from "@utils";
-import { ArticleContainer } from "@containers";
+import { Layout, Loader } from "@components";
+import { ArticleContainer, Custom404Container } from "@containers";
 
 interface Props {
-  article: IArticle;
+  articleId: string;
 }
 
-const Article: NextPage<Props> = ({ article }) => {
-  const PAGE_TITLE = `Article: ${article.title}`;
+const Article: NextPage<Props> = ({ articleId }) => {
+  const { data: articleData, loading } = useQuery(ARTICLE_QUERY, {
+    onError: () => {},
+    variables: { _id: articleId },
+  });
+
+  const article = articleData?.article;
+
+  const PAGE_TITLE = `Article: ${article ? article?.title : ""}`;
   const PAGE_DESCRIPTION = "Article page";
 
-  return (
+  const loadingDiv = (
+    <div className="loading_page_div">
+      <Loader />
+    </div>
+  );
+
+  return !loading && !article ? (
+    <Layout noHeaderAndFooter title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
+      <Custom404Container />
+    </Layout>
+  ) : (
     <Layout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
-      <ArticleContainer article={article} />
+      {loading && loadingDiv}
+      {!loading && article && <ArticleContainer article={article} />}
     </Layout>
   );
 };
@@ -24,17 +41,9 @@ const Article: NextPage<Props> = ({ article }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const articleId = params?.id;
-    const apolloClient = createApolloClient();
-
-    const { data } = await apolloClient.query({
-      query: ARTICLE_QUERY,
-      variables: { _id: articleId },
-    });
-
-    const { article } = data;
 
     return {
-      props: { article },
+      props: { articleId },
     };
   } catch {
     return { notFound: true };
