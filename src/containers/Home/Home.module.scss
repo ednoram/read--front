@@ -61,5 +61,9 @@
 
   &__see_more_link:hover {
     opacity: 0.6;
+
+    @include breakpoint(tablet) {
+      opacity: 1;
+    }
   }
 }

@@ -62,6 +62,10 @@
 
   &__user_name:hover {
     opacity: 0.6;
+
+    @include breakpoint(tablet) {
+      opacity: 1;
+    }
   }
 
   &__user_email {

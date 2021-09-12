@@ -41,6 +41,10 @@
 
   &__article_title:hover {
     opacity: 0.6;
+
+    @include breakpoint(tablet) {
+      opacity: 1;
+    }
   }
 
   &__article_body {
