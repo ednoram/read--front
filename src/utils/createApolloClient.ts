@@ -8,7 +8,11 @@ import {
 import { APOLLO_URI } from "@constants";
 
 const createApolloClient = (): ApolloClient<NormalizedCacheObject> => {
-  const link = new HttpLink({ uri: APOLLO_URI, credentials: "include" });
+  const link = new HttpLink({
+    uri: APOLLO_URI,
+    credentials: "include",
+  });
+
   const cache = new InMemoryCache();
 
   return new ApolloClient({

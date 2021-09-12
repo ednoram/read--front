@@ -55,6 +55,7 @@ const Form: FC = () => {
         <input
           type="email"
           value={email}
+          autoComplete="off"
           placeholder="Email address"
           className={styles.form__input}
           onChange={(e) => setEmail(e.target.value)}

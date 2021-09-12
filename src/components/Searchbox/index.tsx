@@ -27,6 +27,7 @@ const Searchbox: FC<Props> = ({ setSearchFilter, placeholder }) => {
       <div className={styles.form__input_container}>
         <input
           maxLength={60}
+          autoComplete="off"
           value={inputValue}
           placeholder={placeholder}
           onChange={(e) => setInputValue(e.target.value)}

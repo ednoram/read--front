@@ -71,6 +71,7 @@ const Form: FC = () => {
       <div className={styles.form__inputs}>
         <input
           type="password"
+          autoComplete="off"
           value={newPassword}
           placeholder="New Password"
           className={styles.form__input}
@@ -78,6 +79,7 @@ const Form: FC = () => {
         />
         <input
           type="password"
+          autoComplete="off"
           value={passwordConfirmation}
           className={styles.form__input}
           placeholder="Confirm New Password"

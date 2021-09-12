@@ -129,6 +129,7 @@ const CommentForm: FC<Props> = ({
     <div className={styles.comments__form_content}>
       <input
         value={inputValue}
+        autoComplete="off"
         placeholder="Comment"
         className={styles.comments__input}
         onChange={(e) => setInputValue(e.target.value)}

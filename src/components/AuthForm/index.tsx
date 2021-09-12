@@ -95,12 +95,14 @@ const AuthForm: FC<Props> = ({ type, setStep, email, setEmail }) => {
         {typeIsRegister && (
           <input
             placeholder="Name"
+            autoComplete="off"
             className={styles.form__text_input}
             onChange={(e) => setStateProperty("name", e.target.value)}
           />
         )}
         <input
           type="email"
+          autoComplete="off"
           value={state.email}
           placeholder="Email address"
           className={styles.form__text_input}
@@ -108,6 +110,7 @@ const AuthForm: FC<Props> = ({ type, setStep, email, setEmail }) => {
         />
         <input
           type="password"
+          autoComplete="off"
           value={state.password}
           placeholder="Password"
           className={styles.form__text_input}
@@ -116,6 +119,7 @@ const AuthForm: FC<Props> = ({ type, setStep, email, setEmail }) => {
         {typeIsRegister && (
           <input
             type="password"
+            autoComplete="off"
             placeholder="Confirm Password"
             className={styles.form__text_input}
             onChange={(e) =>

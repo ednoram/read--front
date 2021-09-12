@@ -11,7 +11,7 @@ import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 import styles from "./Article.module.scss";
 
-const LIMIT = 2;
+const LIMIT = 5;
 
 const Comments: FC = () => {
   const [refetch, setRefetch] = useState(0);

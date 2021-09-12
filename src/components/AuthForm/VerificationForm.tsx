@@ -87,6 +87,7 @@ const VerificationForm: FC<Props> = ({ email }) => {
         </p>
         <input
           value={code}
+          autoComplete="off"
           placeholder="Verification Code"
           className={styles.form__text_input}
           onChange={(e) => setCode(e.target.value)}
