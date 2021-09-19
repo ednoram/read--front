@@ -20,7 +20,16 @@ const CommentItem: FC<Props> = ({ comment, setComments, setTotalCount }) => {
 
   const user = useGetUser();
 
-  const editButton = user.email === comment?.userEmail && (
+  const commentDate = new Date(Number(comment.updatedAt)).toLocaleDateString(
+    "en",
+    {
+      month: "short",
+      year: "numeric",
+      day: "numeric",
+    }
+  );
+
+  const editButton = user?.email === comment?.userEmail && (
     <button
       onClick={() => setEditing(true)}
       className={styles.comments__edit_button}
@@ -46,6 +55,7 @@ const CommentItem: FC<Props> = ({ comment, setComments, setTotalCount }) => {
   ) : (
     <div>
       <p>{comment?.text}</p>
+      <p className={styles.comments__date_p}>{commentDate}</p>
       {editButton}
       <div>{userLink}</div>
     </div>

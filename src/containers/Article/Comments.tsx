@@ -32,9 +32,7 @@ const Comments: FC = () => {
           setTotalCount(commentsData.comments.totalCount);
         }
       },
-      onError: () => {
-        alert("Something went wrong.");
-      },
+      onError: () => alert("Something went wrong."),
     }
   );
 
@@ -75,7 +73,9 @@ const Comments: FC = () => {
 
   return (
     <div className={styles.comments}>
-      <h2 className={styles.comments__title}>Comments ({totalCount})</h2>
+      <h2 className={styles.comments__title}>
+        Comments {!loadingComments && `(${totalCount})`}
+      </h2>
       <div className={styles.comments__form_and_list}>
         <CommentForm setTotalCount={setTotalCount} setComments={setComments} />
         {comments && comments?.length > 0 && (

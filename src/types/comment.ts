@@ -3,6 +3,8 @@ interface IComment {
   text: string;
   articleId: string;
   userEmail: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default IComment;

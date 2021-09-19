@@ -36,19 +36,18 @@ const CommentForm: FC<Props> = ({
     comment ? UPDATE_COMMENT_MUTATION : POST_COMMENT_MUTATION,
     {
       onError: () => {
-        if (!isAuthenticated) {
-          alert("Log in to post comments.");
-        }
+        if (!isAuthenticated) alert("Log in to post comments.");
       },
       onCompleted: (data) => {
         const response = comment ? data.updateComment : data.postComment;
 
         setComments((state) =>
-          comment ? updateComment(state, response) : [response, ...state]
+          comment
+            ? updateComment(state, response)
+            : [{ ...response, updatedAt: String(Date.now()) }, ...state]
         );
 
         if (!comment) setTotalCount((state) => state + 1);
-
         if (setEditing) setEditing(false);
       },
     }
@@ -66,7 +65,11 @@ const CommentForm: FC<Props> = ({
   );
 
   const updateComment = (state: IComment[], response: { _id: string }) => {
-    return state.map((x) => (x._id === response._id ? response : x));
+    return state.map((x) =>
+      x._id === response._id
+        ? { ...response, updatedAt: String(Date.now()) }
+        : x
+    );
   };
 
   const handleSubmit = (event: FormEvent) => {

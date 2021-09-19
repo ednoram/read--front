@@ -8,6 +8,7 @@ export const COMMENTS_QUERY = gql`
         _id
         text
         userEmail
+        updatedAt
       }
     }
   }
