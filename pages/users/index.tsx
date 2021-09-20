@@ -3,8 +3,8 @@ import { NextPage } from "next";
 import { Layout } from "@components";
 import { UsersContainer } from "@containers";
 
-const PAGE_TITLE = "Articles";
-const PAGE_DESCRIPTION = "Articles page";
+const PAGE_TITLE = "Users";
+const PAGE_DESCRIPTION = "Users page";
 
 const Users: NextPage = () => {
   return (

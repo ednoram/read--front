@@ -6,7 +6,7 @@ import { HomeContainer } from "@containers";
 const PAGE_TITLE =
   "Read | A place where you can learn and share your knowledge";
 const PAGE_DESCRIPTION =
-  "Read is a website where you can learn and share your knowledge.";
+  "A place where you can learn and share your knowledge.";
 
 const Home: NextPage = () => {
   return (

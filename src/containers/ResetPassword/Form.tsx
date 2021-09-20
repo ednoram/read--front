@@ -1,12 +1,10 @@
 import { useState, FC, FormEvent } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
 import { LOGIN_ROUTE } from "@constants";
 import { getGraphqlErrorMessage } from "@utils";
-import { RESET_PASSWORD_ROUTE } from "@constants";
 import { RESET_PASSWORD_MUTATION } from "@graphql";
 
 import styles from "./ResetPassword.module.scss";
@@ -86,12 +84,6 @@ const Form: FC = () => {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <button className={styles.form__submit_button}>Set Password</button>
-        <p>
-          {`Didn't receive? `}
-          <Link href={RESET_PASSWORD_ROUTE}>
-            <a className="color_primary">Send Again</a>
-          </Link>
-        </p>
       </div>
     </form>
   );

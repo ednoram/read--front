@@ -60,7 +60,9 @@ const Form: FC = () => {
           className={styles.form__input}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className={styles.form__submit_button}>Send Email</button>
+        <button disabled={loading} className={styles.form__submit_button}>
+          Send Email
+        </button>
       </div>
     </form>
   );

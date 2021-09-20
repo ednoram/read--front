@@ -6,7 +6,7 @@ import { RegisterContainer } from "@containers";
 
 const PAGE_TITLE = "Register";
 const PAGE_DESCRIPTION =
-  "Read is a website where you can learn and share your knowledge.";
+  "A place where you can learn and share your knowledge.";
 
 const Register: NextPage = () => {
   useProtectRoute(false);
