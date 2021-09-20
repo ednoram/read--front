@@ -49,6 +49,7 @@ const LikeButton: FC<Props> = ({
 
   return (
     <button
+      name="like button"
       disabled={loading}
       onClick={handleButtonClick}
       className={styles.top_section__like_button}

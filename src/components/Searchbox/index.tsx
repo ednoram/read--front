@@ -33,7 +33,11 @@ const Searchbox: FC<Props> = ({ setSearchFilter, placeholder }) => {
           onChange={(e) => setInputValue(e.target.value)}
         />
       </div>
-      <button className={styles.form__submit_button}>
+      <button
+        name="search"
+        aria-label="search"
+        className={styles.form__submit_button}
+      >
         <SearchIcon className={styles.form__search_icon} />
       </button>
     </form>

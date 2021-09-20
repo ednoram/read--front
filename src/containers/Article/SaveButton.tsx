@@ -32,6 +32,7 @@ const SaveButton: FC<Props> = ({ article, isSaved, setIsSaved }) => {
 
   return (
     <button
+      name="save button"
       disabled={loadingSave}
       onClick={handleSaveButtonClick}
       className={styles.top_section__save_button}

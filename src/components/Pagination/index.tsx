@@ -39,6 +39,7 @@ const Pagination: FC<Props> = ({
   const numberButtons = buttonNames.map((name) => (
     <li key={nanoid()}>
       <button
+        name={`go to page ${name}`}
         onClick={() => goToPage(Number(name))}
         className={
           currentPage === Number(name)
@@ -55,7 +56,9 @@ const Pagination: FC<Props> = ({
     <ul className={styles.content}>
       <li>
         <button
+          name="previous page"
           disabled={offset <= 0}
+          aria-label="previous page"
           onClick={handlePrevPageClick}
           className={styles.content__page_button}
         >
@@ -65,6 +68,8 @@ const Pagination: FC<Props> = ({
       {numberButtons}
       <li>
         <button
+          name="next page"
+          aria-label="next page"
           onClick={handleNextPageClick}
           className={styles.content__page_button}
           disabled={offset + limit >= totalItemsCount}
