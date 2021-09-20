@@ -6,7 +6,9 @@ import styles from "./Footer.module.scss";
 const Footer: FC = () => {
   const githubLink = (
     <Link href="https://github.com/ednoram">
-      <a target="_blank">@ednoram</a>
+      <a target="_blank" rel="noreferrer">
+        @ednoram
+      </a>
     </Link>
   );
 
