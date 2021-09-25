@@ -9,10 +9,6 @@ interface Props {
 
 const Hamburger: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
   const handleClick = () => {
-    if (window.scrollY !== 0) {
-      window.scroll(0, 0);
-    }
-
     setMenuIsOpen(!menuIsOpen);
   };
 

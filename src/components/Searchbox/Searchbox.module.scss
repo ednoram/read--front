@@ -8,12 +8,20 @@
   }
 
   &__input_container {
+    display: flex;
+    justify-content: space-between;
     border: $border;
-    padding: 10px 12px;
+    padding: 10px 8px 10px 12px;
 
     input {
       width: 100%;
     }
+  }
+
+  &__clear_input_icon {
+    width: 20px;
+    fill: black;
+    cursor: pointer;
   }
 
   &__submit_button {

@@ -27,9 +27,9 @@ const useControlScroll = (
     const body = document.querySelector("body");
 
     if (body?.style) {
-      body.style.position = "fixed";
       body.style.overflow = "hidden";
       body.style.touchAction = "none";
+      body.style.position = "relative";
     }
   };
 

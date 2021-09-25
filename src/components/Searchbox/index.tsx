@@ -1,5 +1,6 @@
-import { useState, FC, FormEvent, Dispatch, SetStateAction } from "react";
+import { useState, FC, Dispatch, FormEvent, SetStateAction } from "react";
 
+import CloseIcon from "@assets/CloseIcon.svg";
 import SearchIcon from "@assets/SearchIcon.svg";
 
 import styles from "./Searchbox.module.scss";
@@ -11,6 +12,7 @@ interface Props {
 
 const Searchbox: FC<Props> = ({ setSearchFilter, placeholder }) => {
   const [inputValue, setInputValue] = useState("");
+  const [inputIsFocused, setInputIsFocused] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -22,24 +24,45 @@ const Searchbox: FC<Props> = ({ setSearchFilter, placeholder }) => {
     }
   };
 
+  const handleBlur = () => {
+    setTimeout(() => setInputIsFocused(false), 200);
+  };
+
+  const handleFocus = () => {
+    setTimeout(() => setInputIsFocused(true), 200);
+  };
+
+  const submitButton = (
+    <button
+      name="search"
+      aria-label="search"
+      className={styles.form__submit_button}
+    >
+      <SearchIcon className={styles.form__search_icon} />
+    </button>
+  );
+
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.form__input_container}>
         <input
           maxLength={60}
-          autoComplete="off"
           value={inputValue}
+          autoComplete="off"
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           placeholder={placeholder}
           onChange={(e) => setInputValue(e.target.value)}
         />
+        {inputValue && inputIsFocused && (
+          <CloseIcon
+            aria-label="clear input"
+            onClick={() => setInputValue("")}
+            className={styles.form__clear_input_icon}
+          />
+        )}
       </div>
-      <button
-        name="search"
-        aria-label="search"
-        className={styles.form__submit_button}
-      >
-        <SearchIcon className={styles.form__search_icon} />
-      </button>
+      {submitButton}
     </form>
   );
 };

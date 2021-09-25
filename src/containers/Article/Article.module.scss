@@ -26,7 +26,7 @@
   &__like_icon {
     width: 24px;
     fill: $primaryColor;
-    margin-right: 4px;
+    margin: 0 4px 4px 0;
   }
 
   &__save_button {
@@ -37,6 +37,7 @@
   &__save_icon {
     width: 24px;
     fill: $primaryColor;
+    margin-bottom: 2px;
   }
 
   &__save_button:hover,
@@ -201,12 +202,8 @@
   }
 
   &__edit_button {
-    background: none;
-    margin-top: 4px;
-  }
-
-  &__user_email {
     color: $primaryColor;
+    background: none;
     margin-top: 4px;
   }
 
@@ -214,6 +211,11 @@
     width: 22px;
     fill: $primaryColor;
     margin: 0 4px -4px 0;
+  }
+
+  &__user_email {
+    color: $primaryColor;
+    margin-top: 4px;
   }
 
   &__loading_comments_div {

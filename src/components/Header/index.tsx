@@ -24,12 +24,12 @@ const Header: FC = () => {
 
   const authRelatedLinks = isAuthenticated ? (
     <>
-      <NavigationLink href={POST_ARTICLE} text="Post Article">
-        Log Out
-      </NavigationLink>
-      <NavigationLink href={MY_ACCOUNT_ROUTE} text="My Account">
-        Log Out
-      </NavigationLink>
+      <li>
+        <NavigationLink href={POST_ARTICLE} text="Post Article" />
+      </li>
+      <li>
+        <NavigationLink href={MY_ACCOUNT_ROUTE} text="My Account" />
+      </li>
     </>
   ) : (
     <>
