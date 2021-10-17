@@ -81,10 +81,10 @@
   &__continue_link {
     color: white;
     margin-top: 28px;
-  }
 
-  &__continue_link:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__responsive_links_div {

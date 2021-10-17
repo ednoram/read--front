@@ -57,13 +57,13 @@
     color: $primaryColor;
     font-size: 1.125rem;
     margin-top: 32px;
-  }
 
-  &__see_more_link:hover {
-    opacity: 0.6;
+    &:hover {
+      opacity: 0.6;
 
-    @include breakpoint(tablet) {
-      opacity: 1;
+      @include breakpoint(tablet) {
+        opacity: 1;
+      }
     }
   }
 }

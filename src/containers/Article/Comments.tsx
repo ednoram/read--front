@@ -14,8 +14,8 @@ import styles from "./Article.module.scss";
 const LIMIT = 5;
 
 const Comments: FC = () => {
-  const [refetch, setRefetch] = useState(0);
   const [offset, setOffset] = useState(0);
+  const [refetch, setRefetch] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [comments, setComments] = useState<IComment[]>([]);
 

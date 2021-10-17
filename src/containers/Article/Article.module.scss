@@ -21,6 +21,14 @@
   &__like_button {
     background: none;
     color: black;
+
+    &:hover {
+      opacity: 0.6;
+
+      @include breakpoint(tablet) {
+        opacity: 1;
+      }
+    }
   }
 
   &__like_icon {
@@ -32,21 +40,20 @@
   &__save_button {
     background: none;
     color: black;
+
+    &:hover {
+      opacity: 0.6;
+
+      @include breakpoint(tablet) {
+        opacity: 1;
+      }
+    }
   }
 
   &__save_icon {
     width: 24px;
     fill: $primaryColor;
     margin-bottom: 2px;
-  }
-
-  &__save_button:hover,
-  &__like_button:hover {
-    opacity: 0.6;
-
-    @include breakpoint(tablet) {
-      opacity: 1;
-    }
   }
 
   &__title {

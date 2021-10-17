@@ -11,8 +11,8 @@ import { useMutation } from "@apollo/client";
 
 import { Loader } from "@components";
 import { MY_ACCOUNT_ROUTE } from "@constants";
-import { getGraphqlErrorMessage, setTokenCookie } from "@utils";
 import { LOG_IN_MUTATION, REGISTER_MUTATION } from "@graphql";
+import { getGraphqlErrorMessage, setTokenCookie } from "@utils";
 
 import styles from "./AuthForm.module.scss";
 import VerificationForm from "./VerificationForm";

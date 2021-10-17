@@ -14,14 +14,14 @@
   background: $primaryColor !important;
   transform: scale(0.7);
   opacity: 0.6 !important;
-}
 
-.react-multiple-carousel__arrow:hover {
-  opacity: 1 !important;
-}
+  &:hover {
+    opacity: 1 !important;
+  }
 
-.react-multiple-carousel__arrow::before {
-  color: white !important;
+  &::before {
+    color: white !important;
+  }
 }
 
 .react-multiple-carousel__arrow--left {
