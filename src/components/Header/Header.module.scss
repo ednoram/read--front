@@ -13,19 +13,30 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 16px 0;
+    padding: 10px 0;
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__logo_text {
+    color: $primaryColor;
     font-size: 1.75rem;
     font-weight: bold;
-    color: $primaryColor;
+
+    @include breakpoint(phone-large) {
+      display: none;
+    }
   }
 
   &__nav_list {
     display: flex;
     align-items: center;
     gap: 30px;
+    font-size: 1.125rem;
 
     @include breakpoint(tablet) {
       display: none;
@@ -53,7 +64,7 @@
     overflow-y: scroll;
     touch-action: pan-y;
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.05);
-    padding: 140px 0;
+    padding: 140px 0 160px;
 
     @include breakpoint(tablet) {
       display: block;
@@ -63,18 +74,11 @@
       display: flex;
       flex-direction: column;
       white-space: nowrap;
-      margin-top: 40px;
+      margin-top: 36px;
     }
   }
 
   &__hamburger_menu_open {
     width: 100vw;
-  }
-
-  &__hamburger_logo {
-    color: $primaryColor;
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: center;
   }
 }

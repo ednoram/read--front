@@ -1,10 +1,6 @@
 .main {
   padding: 60px 0 120px;
-  margin-top: 64px;
-
-  @include breakpoint(tablet) {
-    margin-top: 70px;
-  }
+  margin-top: 68px;
 }
 
 .no_top_padding {

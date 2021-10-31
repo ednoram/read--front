@@ -7,7 +7,13 @@
     padding: 48px 0 56px;
   }
 
-  &__read_text {
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__logo_text {
     font-size: 1.75rem;
     color: $primaryColor;
     font-weight: bold;
@@ -17,7 +23,7 @@
     }
   }
 
-  &__text {
+  &__author_text {
     color: $primaryColor;
     margin-top: 10px;
   }

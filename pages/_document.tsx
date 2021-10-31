@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#6a5bdc" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/logo-512.png" />
+          <link rel="apple-touch-icon" href="/logo_512.png" />
         </Head>
         <body>
           <Main />

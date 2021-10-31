@@ -1,5 +1,6 @@
 import { useState, FC } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import {
   LOGIN_ROUTE,
@@ -69,7 +70,9 @@ const Header: FC = () => {
       >
         {menuIsOpen && (
           <>
-            <p className={styles.header__hamburger_logo}>Read</p>
+            <div className="flex_center">
+              <Image width={64} height={64} src="/logo.svg" />
+            </div>
             {navigation}
           </>
         )}
@@ -83,7 +86,15 @@ const Header: FC = () => {
         <div className={styles.header__content}>
           <div>
             <Link href="/">
-              <a className={styles.header__logo}>Read</a>
+              <a className={styles.header__logo}>
+                <Image
+                  src="/logo.svg"
+                  width={48}
+                  height={48}
+                  className={styles.header__logo}
+                />
+                <p className={styles.header__logo_text}>Read</p>
+              </a>
             </Link>
           </div>
           {navigation}

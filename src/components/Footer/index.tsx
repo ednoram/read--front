@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import styles from "./Footer.module.scss";
 
@@ -16,8 +17,11 @@ const Footer: FC = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className="flex_center">
-          <p className={styles.footer__read_text}>Read</p>
-          <p className={styles.footer__text}>By {githubLink}</p>
+          <div className={styles.footer__logo}>
+            <Image width={48} height={48} src="/logo.svg" />
+            <p className={styles.footer__logo_text}>Read</p>
+          </div>
+          <p className={styles.footer__author_text}>By {githubLink}</p>
         </div>
       </div>
     </footer>
