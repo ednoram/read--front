@@ -4,15 +4,16 @@ A place where you can learn and share your knowledge.
 
 ## Features
 
+- Authentication (login, register).
 - Articles list with pagination and search filter.
-- Login, register.
+- Users list with pagination and search filter.
 - Post, edit, delete articles.
 - Like articles.
 - Save articles.
-- Article comments (post, edit, delete).
+- Comments (post, edit, delete).
 - Change user name, password, etc.
 - Verify account with email.
-- Reset forgotten password with email.
+- Forgot password, reset with email.
 
 ## Technologies
 
@@ -23,6 +24,10 @@ A place where you can learn and share your knowledge.
 - SCSS
 - ES6
 - ESLint
+
+## Demo
+
+> https://read-ednoram.vercel.app/
 
 ## Usage
 
